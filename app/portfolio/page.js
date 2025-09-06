@@ -252,7 +252,7 @@ const handleAboutClick = (e) => {
             >
               <div className="w-full h-72 overflow-hidden">
                 <Image
-                  src="/portfolio/IMG_2791.JPG"
+                  src="/portfolio/IMG_2791.jpg"
                   alt="Videography"
                   width={800}
                   height={500}

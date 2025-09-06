@@ -389,15 +389,15 @@ export default function Home() {
             >
               {[
                 { src: '/logos/adobe.png', alt: 'Adobe' },
-                { src: '/logos/black.png', alt: 'Blackmagic' },
+                { src: '/logos/black.PNG', alt: 'Blackmagic' },
                 { src: '/logos/sony.png', alt: 'Sony' },
                 { src: '/logos/canon.png', alt: 'Canon' },
                 { src: '/logos/zeiss.png', alt: 'Zeiss' },
                 { src: '/logos/zoom1.png', alt: 'Zoom' },
-                { src: '/logos/rode.png', alt: 'Rode' },
+                { src: '/logos/Rode.png', alt: 'Rode' },
                 { src: '/logos/godox.png', alt: 'Godox' },
-                { src: '/logos/senn.png', alt: 'Sennheiser' },
-                { src: '/logos/sigma.png', alt: 'Sigma' },
+                { src: '/logos/senn.PMG', alt: 'Sennheiser' },
+                { src: '/logos/sigma.PNG', alt: 'Sigma' },
               ].map((logo, index) => (
                 <motion.div
                   key={index}
