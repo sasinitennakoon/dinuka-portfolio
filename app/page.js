@@ -396,7 +396,7 @@ export default function Home() {
                 { src: '/logos/zoom1.png', alt: 'Zoom' },
                 { src: '/logos/Rode.png', alt: 'Rode' },
                 { src: '/logos/godox.png', alt: 'Godox' },
-                { src: '/logos/senn.PMG', alt: 'Sennheiser' },
+                { src: '/logos/senn.PNG', alt: 'Sennheiser' },
                 { src: '/logos/sigma.PNG', alt: 'Sigma' },
               ].map((logo, index) => (
                 <motion.div
