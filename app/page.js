@@ -204,11 +204,11 @@ export default function Home() {
             {mobileMenuOpen && (
               <div className="md:hidden mt-2 py-4 px-6">
                 <div className="flex flex-col space-y-3 text-white">
-                  <a href="#home" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter]">HOME</a>
-                  <a href="#about" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter]">ABOUT</a>
-                  <Link href="/portfolio" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter]">WORK</Link>
-                  <Link href="/blog" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter]">BLOG</Link>
-                  <a href="https://wa.me/94716295618" target="_blank" rel="noopener noreferrer" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter]">CONTACT</a>
+                  <a href="#home" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter] text-center ">HOME</a>
+                  <a href="#about" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter] text-center">ABOUT</a>
+                  <Link href="/portfolio" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter] text-center">WORK</Link>
+                  <Link href="/blog" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter] text-center">BLOG</Link>
+                  <a href="https://wa.me/94716295618" target="_blank" rel="noopener noreferrer" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter] text-center">CONTACT</a>
                 </div>
               </div>
             )}
