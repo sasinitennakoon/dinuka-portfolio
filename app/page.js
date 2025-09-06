@@ -120,6 +120,25 @@ export default function Home() {
     }
   }, []);
 
+   // Close mobile menu on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [mobileMenuOpen]);
+
+  // Common gradient style for both navbar + expanded menu
+  const navBackground = {
+    background:
+      "linear-gradient(90deg, rgba(29,42,65,0.9) 0%, rgba(13,19,33,0.9) 50%, rgba(29,42,65,0.9) 100%)",
+    backdropFilter: "blur(10px)",
+  };
+
   return (
     <main className="relative min-h-screen text-white">
       {/* Splash / Welcome Screen */}
@@ -140,7 +159,7 @@ export default function Home() {
           {/* Navbar */}
           <nav
             ref={navRef}
-            className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 rounded-full shadow-md opacity-0 transition-opacity duration-500 ease-in-out ${
+            className={`fixed top-4 left-1/2 -translate-x-1/2 z-50  shadow-md opacity-0 transition-opacity duration-500 ease-in-out ${
               !showWelcome ? 'opacity-100' : 'opacity-0 pointer-events-none'
             } ${
               navVisible ? 'translate-y-0' : '-translate-y-full'
@@ -149,7 +168,8 @@ export default function Home() {
               background: 'linear-gradient(90deg, rgba(29,42,65,0.9) 0%, rgba(13,19,33,0.9) 50%, rgba(29,42,65,0.9) 100%)',
               backdropFilter: 'blur(10px)',
               width: 'calc(100% - 3rem)',
-              maxWidth: '1400px'
+              maxWidth: '1400px',
+              borderRadius: mobileMenuOpen ? '1rem' : '9999px',
             }}
           >
             <div className="flex justify-between items-center px-8 py-4">
@@ -172,86 +192,83 @@ export default function Home() {
                 <button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                   className="text-white text-2xl focus:outline-none p-2 rounded-full hover:bg-white/10"
-                  aria-label="Toggle mobile menu"
+                  
                 >
-                  ☰
+                  {mobileMenuOpen ? '✕' : '☰'}
+                  
                 </button>
               </div>
             </div>
 
             {/* Mobile Menu */}
             {mobileMenuOpen && (
-              <div 
-                className="md:hidden mt-2 py-4 px-6 rounded-2xl"
-                style={{
-                  background: 'linear-gradient(90deg, rgba(29,42,65,0.95) 0%, rgba(13,19,33,0.95) 100%)',
-                  backdropFilter: 'blur(10px)'
-                }}
-              >
+              <div className="md:hidden mt-2 py-4 px-6">
                 <div className="flex flex-col space-y-3 text-white">
                   <a href="#home" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter]">HOME</a>
                   <a href="#about" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter]">ABOUT</a>
-                  <a href="#service" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter]">WORK</a>
-                  <a href="#blog" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter]">BLOG</a>
+                  <Link href="/portfolio" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter]">WORK</Link>
+                  <Link href="/blog" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter]">BLOG</Link>
                   <a href="https://wa.me/94716295618" target="_blank" rel="noopener noreferrer" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter]">CONTACT</a>
                 </div>
               </div>
             )}
+
           </nav>
 
 
-<section id="home" className="relative w-full h-screen pt-20 overflow-hidden">
-  {/* Background Video */}
-  <div className="absolute inset-0 z-0">
-    <video
-      className="w-full h-full object-cover"
-      autoPlay
-      muted
-      loop
-      playsInline
-    >
-      <source src="/Web Cover New11.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    {/* Gradient Overlay - Increased opacity for better text visibility */}
-    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
-  </div>
-  
-  {/* Content Container - Using Framer Motion for reliable animation */}
-  <div className="relative z-10 h-[90vh] flex items-center">
-    <div className="container mx-auto px-6 md:px-16">
-      <motion.div 
-        className="max-w-2xl"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-      >
-        {/* First Line - Welcome to My */}
-        <h1 
-          className={`text-3xl md:text-6xl font-light text-white mb-2 leading-tight whitespace-nowrap ${playfair.className}`}
-        >
-          Welcome to My
-        </h1>
-        <h2 
-          className={`text-4xl md:text-7xl font-bold text-white mb-6 leading-tight whitespace-nowrap ${playfair.className}`}
-        >
-          CREATIVE WORLD!
-        </h2>
-        
-        {/* Download Button */}
-        <motion.a
-          href="/Dinuka_CV.pdf"
-          download
-          className="inline-block bg-white text-[#0D1321] font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-200 transition-colors duration-300"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Download CV
-        </motion.a>
-      </motion.div>
-    </div>
-  </div>
-</section>
+          <section id="home" className="relative w-full h-screen pt-20 overflow-hidden">
+            {/* Background Video */}
+            <div className="absolute inset-0 z-0">
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
+                <source src="/Web Cover New11.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              {/* Gradient Overlay - Increased opacity for better text visibility */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
+            </div>
+            
+            {/* Content Container - Using Framer Motion for reliable animation */}
+            <div className="relative z-10 h-[90vh] flex items-center">
+              <div className="container mx-auto px-6 md:px-16">
+                <motion.div 
+                  className="max-w-2xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                >
+                  {/* First Line - Welcome to My */}
+                  <h1 
+                    className={`text-3xl md:text-6xl font-light text-white mb-2 leading-tight whitespace-nowrap ${playfair.className}`}
+                  >
+                    Welcome to My
+                  </h1>
+                  <h2 
+                    className={`text-4xl md:text-7xl font-bold text-white mb-6 leading-tight whitespace-nowrap ${playfair.className}`}
+                  >
+                    CREATIVE WORLD!
+                  </h2>
+                  
+                  {/* Download Button */}
+                  <motion.a
+                    href="/Dinuka_CV.pdf"
+                    download
+                    className="inline-block bg-white text-[#0D1321] font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-200 transition-colors duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Download CV
+                  </motion.a>
+                </motion.div>
+              </div>
+            </div>
+          </section>
+          
           {/* About Section */}
           <section id="about" ref={aboutRef} className="py-20 px-6 md:px-16 bg-[#E7E7E7] text-black">
             <div className="container mx-auto">
@@ -263,13 +280,14 @@ export default function Home() {
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: false, amount: 0.2 }}
+                    className="w-full flex justify-center"
                   >
                     <Image
                       src="/dinuka4 1.png"
                       alt="Dinuka Gunawardana"
                       width={700}
                       height={600}
-                      className="rounded-lg object-cover max-h-[500px] max-w-[400px] h-auto border border-black"
+                      className="rounded-lg object-cover w-full h-auto max-w-sm sm:max-w-md md:max-w-lg border border-black"
                       style={{ objectPosition: 'center' }}
                     />
                   </motion.div>
