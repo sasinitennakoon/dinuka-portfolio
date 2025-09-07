@@ -21,8 +21,8 @@ export default function PhotographyPage() {
   ];
   const commercial = [
     '/photo/commercial11.jpg', '/photo/commercial4.jpg', '/photo/commercial8.jpg','/photo/commercial3.jpg',
-    '/photo/commercial2.jpg', '/photo/commercial5.jpg', '/photo/commercial17.jpg',
-    '/photo/commercial13.JPG', '/photo/commercial9.jpg',
+    '/photo/commercial2.JPG', '/photo/commercial5.jpg', '/photo/commercial17.jpg',
+    '/photo/commercial13.jpg', '/photo/commercial9.jpg',
     '/photo/commercial10.jpg', '/photo/commercial12.jpg', '/photo/commercial1.jpg',
     '/photo/commercial6.jpg', '/photo/commercial14.jpg', '/photo/commercial15.jpg',
     '/photo/commercial16.jpg', '/photo/commercial7.jpg'
