@@ -87,7 +87,7 @@ export default function BlogDetailPage({ params }) {
         <div className="flex flex-col md:flex-row items-center px-8 py-4">
           {/* Top row: Logo + Toggle */}
           <div className="flex justify-between w-full items-center md:w-auto">
-            <Link href="/" className="flex-shrink-0">
+            <Link href="/#home" className="flex-shrink-0">
               <Image
                 src="/signature-dinuka.png"
                 alt="Signature"

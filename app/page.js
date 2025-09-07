@@ -175,7 +175,15 @@ export default function Home() {
             <div className="flex justify-between items-center px-8 py-4">
               {/* Logo/Brand Name */}
               <div className="w-100">
-                <Image src="/signature-dinuka.png" alt="Signature" width={120} height={30} />
+                <a href="#home">
+                  <Image 
+                    src="/signature-dinuka.png" 
+                    alt="Signature" 
+                    width={120} 
+                    height={30} 
+                    className="cursor-pointer" // Optional: adds pointer cursor on hover
+                  />
+                </a>
               </div>
 
               {/* Desktop Navigation */}
