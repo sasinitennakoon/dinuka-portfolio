@@ -179,7 +179,7 @@ export default function Home() {
                   <Image 
                     src="/signature-dinuka.png" 
                     alt="Signature" 
-                    width={120} 
+                    width={200} 
                     height={30} 
                     className="cursor-pointer" // Optional: adds pointer cursor on hover
                   />
@@ -264,7 +264,7 @@ export default function Home() {
                   
                   {/* Download Button */}
                   <motion.a
-                    href="/Dinuka_CV.pdf"
+                    href="/Dinuka Gunawardana CV.pdf"
                     download
                     className="inline-block bg-white text-[#0D1321] font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-200 transition-colors duration-300"
                     whileHover={{ scale: 1.05 }}
@@ -313,7 +313,7 @@ export default function Home() {
                       I&apos;m Dinuka Gunawardana
                     </h1>
                     <div className="space-y-6">
-                      <p className="text-xl text-[#0D1321] leading-relaxed font-[DM_Sans]">
+                      <p className="text-xl text-[#0D1321] leading-relaxed font-[DM_Sans] text-justify">
                         I am a multidisciplinary visual artist with a deep passion for storytelling through art. As a dedicated freelancer, I engage in a wide range of creative services including photography, videography, editing, graphic design, and more. I take pride in my attention to detail and commitment to creativity, always striving to bring unique visions to life.
                         <br />
                         <br />
@@ -396,7 +396,7 @@ export default function Home() {
               viewport={{ once: false, amount: 0.2 }}
             >
               {[
-                { src: '/logos/adobe.png', alt: 'Adobe' },
+                { src: '/logos/Adobe.png', alt: 'Adobe' },
                 { src: '/logos/black.PNG', alt: 'Blackmagic' },
                 { src: '/logos/sony.png', alt: 'Sony' },
                 { src: '/logos/canon.png', alt: 'Canon' },
@@ -404,7 +404,7 @@ export default function Home() {
                 { src: '/logos/zoom1.png', alt: 'Zoom' },
                 { src: '/logos/Rode.png', alt: 'Rode' },
                 { src: '/logos/godox.png', alt: 'Godox' },
-                { src: '/logos/senn.PNG', alt: 'Sennheiser' },
+                { src: '/logos/dji.png', alt: 'Dji' },
                 { src: '/logos/sigma.PNG', alt: 'Sigma' },
               ].map((logo, index) => (
                 <motion.div

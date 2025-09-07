@@ -105,7 +105,7 @@ const handleAboutClick = (e) => {
         <Image
           src="/signature-dinuka.png"
           alt="Signature"
-          width={120}
+          width={200}
           height={30}
           className="object-contain cursor-pointer"
         />

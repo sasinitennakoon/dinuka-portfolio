@@ -48,3 +48,19 @@ module.exports = {
     },
   },
 };
+
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      lineHeight: {
+        'sinhala': '1.6', // slightly larger for Sinhala text
+      },
+      letterSpacing: {
+        'sinhala': '0.5px',
+      },
+    },
+  },
+  plugins: [],
+}

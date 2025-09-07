@@ -91,8 +91,8 @@ export default function GraphicDesignPage() {
         <Image
           src="/signature-dinuka.png"
           alt="Signature"
-          width={120}
-          height={80}
+          width={200}
+          height={30}
           className="object-contain cursor-pointer"
         />
       </Link>

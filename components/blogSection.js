@@ -2,6 +2,55 @@
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Noto_Sans_Sinhala } from "next/font/google";
+
+// Import the font directly in this component
+const notoSinhala = Noto_Sans_Sinhala({
+  subsets: ["sinhala"],
+  weight: ["400", "700"],
+  display: "swap",
+});
+
+// Function to detect if text contains Sinhala characters
+const containsSinhala = (text) => {
+  return /[\u0D80-\u0DFF]/.test(text);
+};
+
+// Function to split text into Sinhala and non-Sinhala parts
+const splitSinhalaAndEnglish = (text) => {
+  const sinhalaRegex = /[\u0D80-\u0DFF]+/g;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+  
+  while ((match = sinhalaRegex.exec(text)) !== null) {
+    // Add text before Sinhala part
+    if (match.index > lastIndex) {
+      parts.push({
+        text: text.substring(lastIndex, match.index),
+        isSinhala: false
+      });
+    }
+    
+    // Add Sinhala part
+    parts.push({
+      text: match[0],
+      isSinhala: true
+    });
+    
+    lastIndex = match.index + match[0].length;
+  }
+  
+  // Add remaining text
+  if (lastIndex < text.length) {
+    parts.push({
+      text: text.substring(lastIndex),
+      isSinhala: false
+    });
+  }
+  
+  return parts;
+};
 
 const blogs = [
   {
@@ -53,31 +102,30 @@ export default function BlogSection() {
   const [isPaused, setIsPaused] = useState(false);
 
   // ✅ CORRECT - Add curly braces
-useEffect(() => {
-  const container = containerRef.current;
-  if (!container) return;
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
 
-  const scroll = () => {
-    if (!isPaused) {
-      scrollAmount.current += 0.5;
-      if (scrollAmount.current >= container.scrollWidth / 2) {
-        scrollAmount.current = 0;
+    const scroll = () => {
+      if (!isPaused) {
+        scrollAmount.current += 0.5;
+        if (scrollAmount.current >= container.scrollWidth / 2) {
+          scrollAmount.current = 0;
+        }
+        container.scrollLeft = scrollAmount.current;
       }
-      container.scrollLeft = scrollAmount.current;
-    }
-    animationId.current = requestAnimationFrame(scroll);
-  };
+      animationId.current = requestAnimationFrame(scroll);
+    };
 
-  animationId.current = requestAnimationFrame(scroll);
-  return () => cancelAnimationFrame(animationId.current);
-}, [isPaused]);
+    animationId.current = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationId.current);
+  }, [isPaused]);
 
   return (
     <section
       id="blog"
       className="py-20 px-6 md:px-16 bg-[#E7E7E7] text-black relative"
     >
-
       <div
         ref={containerRef}
         className="overflow-hidden w-full cursor-default select-none"
@@ -85,36 +133,74 @@ useEffect(() => {
         onMouseLeave={() => setIsPaused(false)}
       >
         <div className="flex gap-8 w-max">
-          {[...blogs, ...blogs].map((blog, index) => (
-            <Link
-              href={blog.link}
-              key={`${blog.id}-${index}`}
-              className="flex-shrink-0 w-80 min-h-[430px] bg-[#FFFBEE] rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all border border-black text-left h-110"
-            >
-              <div className="relative w-full h-48 p-2">
-                <div className="w-full h-full relative rounded-t-lg overflow-hidden border border-[#0D1321]">
-                  <Image
-                    src={blog.image}
-                    alt={blog.title}
-                    fill
-                    loading="lazy"
-                    className="object-cover"
-                  />
+          {[...blogs, ...blogs].map((blog, index) => {
+            const titleParts = splitSinhalaAndEnglish(blog.title);
+            const dateParts = containsSinhala(blog.date) 
+              ? splitSinhalaAndEnglish(blog.date) 
+              : null;
+            const excerptParts = containsSinhala(blog.excerpt) 
+              ? splitSinhalaAndEnglish(blog.excerpt) 
+              : null;
+            
+            return (
+              <Link
+                href={blog.link}
+                key={`${blog.id}-${index}`}
+                className="flex-shrink-0 w-80 min-h-[430px] bg-[#FFFBEE] rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all border border-black text-left h-110"
+              >
+                <div className="relative w-full h-48 p-2">
+                  <div className="w-full h-full relative rounded-t-lg overflow-hidden border border-[#0D1321]">
+                    <Image
+                      src={blog.image}
+                      alt={blog.title}
+                      fill
+                      loading="lazy"
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div className="p-4">
-                <h3 className="text-3xl font-bold mb-2 font-[playfair_display] text-center">
-                  {blog.title}
-                </h3>
-                <p className="text-xs text-gray-500 text-left">{blog.date}</p>
-                <br />
-                <p className="text-m text-gray-700 font-[DM_Sans]">
-                  {blog.excerpt}
-                </p>
-              </div>
-            </Link>
-          ))}
+                <div className="p-4">
+                  {/* Apply Sinhala font only to Sinhala parts of the title */}
+                  <h3 className="text-3xl font-bold mb-2 text-center">
+                    {titleParts.map((part, i) => (
+                      <span key={i} className={part.isSinhala ? notoSinhala.className : "font-[playfair_display]"}>
+                        {part.text}
+                      </span>
+                    ))}
+                  </h3>
+                  
+                  {/* Apply Sinhala font only to Sinhala dates */}
+                  <p className="text-xs text-gray-500 text-left">
+                    {dateParts ? (
+                      dateParts.map((part, i) => (
+                        <span key={i} className={part.isSinhala ? notoSinhala.className : ""}>
+                          {part.text}
+                        </span>
+                      ))
+                    ) : (
+                      blog.date
+                    )}
+                  </p>
+                  
+                  <br />
+                  
+                  {/* Apply Sinhala font only to Sinhala excerpts */}
+                  <p className="text-sm text-gray-700">
+                    {excerptParts ? (
+                      excerptParts.map((part, i) => (
+                        <span key={i} className={part.isSinhala ? notoSinhala.className : "font-[DM_Sans]"}>
+                          {part.text}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="font-[DM_Sans]">{blog.excerpt}</span>
+                    )}
+                  </p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
