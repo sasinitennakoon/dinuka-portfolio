@@ -145,7 +145,7 @@ export default function VideographyPage() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
-                className={`border rounded-xl shadow-sm px-6 py-8 flex flex-col bg-[#FFFBEE] border border-black md:flex-row ${
+                className={` rounded-xl shadow-sm px-6 py-8 flex flex-col bg-[#FFFBEE] border border-black md:flex-row ${
                   index % 2 !== 0 ? 'md:flex-row-reverse' : ''
                 } gap-6 md:gap-12 items-start`}
               >
