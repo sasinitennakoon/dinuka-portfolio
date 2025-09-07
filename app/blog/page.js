@@ -293,22 +293,28 @@ export default function BlogPage() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-[#0D1321] text-white py-6 w-full mt-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex-shrink-0">
-            <Image
-              src="/signature-dinuka.png"
-              alt="Logo"
-              width={140}
-              height={40}
-              className="object-contain"
-            />
-          </div>
-          <div className="text-sm text-center sm:text-right text-[#FFFBEE] font-[DM_sans]">
-            &copy; {new Date().getFullYear()} All rights reserved @ Dinuka Gunawardana
-          </div>
-        </div>
-      </footer>
+<footer className="bg-[#0D1321] text-white w-full py-6 mt-10">
+  <div className="max-w-7xl mx-auto px-6 flex flex-col items-center gap-2 text-center">
+    {/* Copyright */}
+    <div className="text-sm text-[#FFFBEE] font-[DM_sans]">
+      © {new Date().getFullYear()} Dinuka Gunawardana. All rights reserved.
+    </div>
+
+    {/* Developer credit */}
+    <div className="text-xs text-[#FFFBEE] font-[DM_sans]">
+      Designed & Developed by{' '}
+      <a
+        href="https://sasini-tennakoon.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline hover:text-[#FFD700]"
+      >
+        Sasini Tennakoon
+      </a>
+    </div>
+  </div>
+</footer>
+
     </main>
   );
 }

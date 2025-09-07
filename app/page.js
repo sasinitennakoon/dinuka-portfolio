@@ -467,76 +467,90 @@ export default function Home() {
           </section>
 
           {!showWelcome && (
-            <footer className="bg-[#0D1321] text-white py-12 w-full">
-              <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center md:items-start gap-10">
-                {/* Left: Logo + Text + Back to Top */}
-                <div className="flex flex-col items-center md:items-start space-y-4 max-w-xs text-center md:text-left">
-                  <Image
-                    src="/signature-dinuka.png"
-                    alt="Logo"
-                    width={300}
-                    height={100}
-                    className="object-contain"
-                  />
-                  <p className="text-[#FFFBEE] font-[DM_Sans]">
-                    Let&apos;s connect and create something amazing together.
-                  </p>
-                  <button
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="mt-2 px-4 py-2 bg-white text-black rounded-full hover:bg-gray-200 transition font-[DM_Sans]"
-                  >
-                    ↑ Back to Top
-                  </button>
-                </div>
+  <footer className="bg-[#0D1321] text-white py-12 w-full">
+    <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center md:items-start gap-10">
+      {/* Left: Logo + Text + Back to Top */}
+      <div className="flex flex-col items-center md:items-start space-y-4 max-w-xs text-center md:text-left">
+        <Image
+          src="/signature-dinuka.png"
+          alt="Logo"
+          width={300}
+          height={100}
+          className="object-contain"
+        />
+        <p className="text-[#FFFBEE] font-[DM_Sans]">
+          Let&apos;s connect and create something amazing together.
+        </p>
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="mt-2 px-4 py-2 bg-white text-black rounded-full hover:bg-gray-200 transition font-[DM_Sans]"
+        >
+          ↑ Back to Top
+        </button>
+      </div>
 
-                {/* Middle: Navigation (aligned right on md+) */}
-                <div className="w-full md:w-auto">
-                  <div className="flex flex-wrap justify-center md:justify-end gap-6 text-[#FFFBEE] font-[DM_Sans] text-lg">
-                    <Link href="/#home" className="hover:underline">
-                      Home
-                    </Link>
-                    <Link href="/#about" className="hover:underline">
-                      About
-                    </Link>
-                    <Link href="/portfolio" className="hover:underline">
-                      Work
-                    </Link>
-                    <Link href="/blog" className="hover:underline">
-                      Blog
-                    </Link>
-                    <a
-                      href="https://wa.me/94716295618"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:underline"
-                    >
-                      Contact
-                    </a>
-                  </div>
-                </div>
-              </div>
+      {/* Middle: Navigation (aligned right on md+) */}
+      <div className="w-full md:w-auto">
+        <div className="flex flex-wrap justify-center md:justify-end gap-6 text-[#FFFBEE] font-[DM_Sans] text-lg">
+          <Link href="/#home" className="hover:underline">
+            Home
+          </Link>
+          <Link href="/#about" className="hover:underline">
+            About
+          </Link>
+          <Link href="/portfolio" className="hover:underline">
+            Work
+          </Link>
+          <Link href="/blog" className="hover:underline">
+            Blog
+          </Link>
+          <a
+            href="https://wa.me/94716295618"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            Contact
+          </a>
+        </div>
+      </div>
+    </div>
 
-              {/* Divider line */}
-              <hr className="border-[#FFFBEE] opacity-30 mt-10 max-w-7xl mx-auto px-6" />
+    {/* Divider line */}
+    <hr className="border-[#FFFBEE] opacity-30 mt-10 max-w-7xl mx-auto px-6" />
 
-              {/* Address | Email | Phone line */}
-              <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-center gap-4 text-[#FFFBEE] font-[DM_Sans] mt-6 text-center text-sm">
-                <span>Nawala, Colombo, Sri Lanka</span>
-                <span className="hidden sm:inline">|</span>
-                <span>dinukab202@gmail.com</span>
-                <span className="hidden sm:inline">|</span>
-                <span>+94 71 629 5618</span>
-              </div>
+    {/* Address | Email | Phone line */}
+    <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-center gap-4 text-[#FFFBEE] font-[DM_Sans] mt-6 text-center text-sm">
+      <span>Nawala, Colombo, Sri Lanka</span>
+      <span className="hidden sm:inline">|</span>
+      <span>dinukab202@gmail.com</span>
+      <span className="hidden sm:inline">|</span>
+      <span>+94 71 629 5618</span>
+    </div>
 
-              {/* Divider line */}
-              <hr className="border-[#FFFBEE] opacity-30 mt-6 max-w-7xl mx-auto px-6" />
+    {/* Divider line */}
+    <hr className="border-[#FFFBEE] opacity-30 mt-6 max-w-7xl mx-auto px-6" />
 
-              {/* Copyright */}
-              <div className="text-sm text-center text-[#FFFBEE] font-[DM_Sans] mt-6">
-                &copy; {new Date().getFullYear()} All rights reserved Dinuka Gunawardana
-              </div>
-            </footer>
-          )}
+    {/* Copyright + Developer credit */}
+    <div className="text-center mt-6">
+      <div className="text-sm text-[#FFFBEE] font-[DM_Sans]">
+        &copy; {new Date().getFullYear()} All rights reserved Dinuka Gunawardana
+      </div>
+      <div className="text-xs text-[#FFFBEE] font-[DM_Sans] mt-1">
+        Designed & Developed by{' '}
+        <a
+          href="https://sasini-tennakoon.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-[#FFD700]"
+        >
+          Sasini Tennakoon
+        </a>
+      </div>
+    </div>
+  </footer>
+)}
+
         </>
       )}
     </main>
