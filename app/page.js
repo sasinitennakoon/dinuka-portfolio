@@ -396,7 +396,7 @@ export default function Home() {
               viewport={{ once: false, amount: 0.2 }}
             >
               {[
-                { src: '/logos/Adobe.png', alt: 'Adobe' },
+                { src: '/logos/Adobe2.png', alt: 'Adobe' },
                 { src: '/logos/black.PNG', alt: 'Blackmagic' },
                 { src: '/logos/sony.png', alt: 'Sony' },
                 { src: '/logos/canon.png', alt: 'Canon' },
