@@ -219,7 +219,7 @@ export default function VideographyPage() {
                   </div>
                   
                   {/* Apply Sinhala font only to Sinhala parts of the description */}
-                  <p className="text-gray-700 text-2xl md:3xl">
+                  <p className="text-gray-700 text-base md:text-lg">
                     {descriptionParts ? (
                       descriptionParts.map((part, i) => (
                         <span key={i} className={part.isSinhala ? notoSinhala.className : "font-[DM_Sans]"}>
