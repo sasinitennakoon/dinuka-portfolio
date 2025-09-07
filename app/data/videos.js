@@ -5,7 +5,7 @@ export const videos = [
     tag: ["DOP" ],
     description:
       'A creative production by Xposure (Pvt) Ltd, this television commercial showcases the identity and vision of Monara Newspaper. Directed by Shashanka Vidanagama and cinematographed by Dinuka Gunawardana, the project blends impactful storytelling with compelling visuals.',
-    videoSrc: '/video/Monara TVC 1.Jpg',
+    videoSrc: '/video/Monara TVC 1.jpg',
     youtubeUrl: 'https://www.facebook.com/share/v/19TZpHZsd8/?mibextid=wwXIfr'
   },
   {
