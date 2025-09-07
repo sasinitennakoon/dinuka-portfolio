@@ -21,7 +21,7 @@ export default function PhotographyPage() {
   const commercial = [
     '/photo/commercial11.jpg', '/photo/commercial4.jpg', '/photo/commercial8.jpg','/photo/commercial3.jpg',
     '/photo/commercial2.jpg', '/photo/commercial5.jpg', '/photo/commercial17.jpg',
-    '/photo/commercial13.jpg', '/photo/commercial9.jpg',
+    '/photo/commercial13.JPG', '/photo/commercial9.jpg',
     '/photo/commercial10.jpg', '/photo/commercial12.jpg', '/photo/commercial1.jpg',
     '/photo/commercial6.jpg', '/photo/commercial14.jpg', '/photo/commercial15.jpg',
     '/photo/commercial16.jpg', '/photo/commercial7.jpg'
@@ -91,6 +91,25 @@ export default function PhotographyPage() {
     tap: { scale: 0.98, transition: { duration: 0.1 } }
   };
 
+  // Close mobile menu on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [mobileMenuOpen]);
+
+  // Common gradient style for both navbar + expanded menu
+  const navBackground = {
+    background:
+      "linear-gradient(90deg, rgba(29,42,65,0.9) 0%, rgba(13,19,33,0.9) 50%, rgba(29,42,65,0.9) 100%)",
+    backdropFilter: "blur(10px)",
+  };
+
   return (
     <>
       {/* Lightbox */}
@@ -127,114 +146,61 @@ export default function PhotographyPage() {
        {/* Navbar - hidden when lightbox is open */}
 {!lightboxOpen && (
   <nav
-    ref={navRef}
-    className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 shadow-md transition-all rounded-full duration-500 ease-in-out ${
-      navVisible ? 'opacity-100 translate-y-0' : '-translate-y-full opacity-0'
-    }`}
-    style={{
-      background:
-        'linear-gradient(90deg, rgba(29,42,65,0.9) 0%, rgba(13,19,33,0.9) 50%, rgba(29,42,65,0.9) 100%)',
-      backdropFilter: 'blur(10px)',
-      width: 'calc(100% - 3rem)',
-      maxWidth: '1400px',
-      
-    }}
-  >
-      <div className="flex flex-col md:flex-row items-center px-8 py-4">
-        {/* Top row: Logo + Toggle */}
-        <div className="flex justify-between w-full items-center md:w-auto">
-           <Link href="/" className="flex-shrink-0">
-            <Image
-              src="/signature-dinuka.png"
-              alt="Signature"
-              width={120}
-              height={80}
-              className="object-contain cursor-pointer"
-            />
-          </Link>
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-white text-2xl focus:outline-none p-2 rounded-full hover:bg-white/10"
-          >
-            ☰
-          </button>
-        </div>
+  ref={navRef}
+  className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 shadow-md transition-[opacity,transform] duration-500 ease-in-out ${
+    navVisible ? "opacity-100 translate-y-0" : "-translate-y-full opacity-0"
+  } ${mobileMenuOpen ? "rounded-xl" : "rounded-full"}`} // ✅ instantly change
+  style={{
+    background:
+      "linear-gradient(90deg, rgba(29,42,65,0.9) 0%, rgba(13,19,33,0.9) 50%, rgba(29,42,65,0.9) 100%)",
+    backdropFilter: "blur(10px)",
+    width: "calc(100% - 3rem)",
+    maxWidth: "1400px",
+    overflow: "hidden",
+  }}
+>
+  <div className="flex flex-col md:flex-row items-center px-8 py-4">
+    {/* Top row: Logo + Toggle */}
+    <div className="flex justify-between w-full items-center md:w-auto">
+      <Link href="/" className="flex-shrink-0">
+        <Image
+          src="/signature-dinuka.png"
+          alt="Signature"
+          width={120}
+          height={80}
+          className="object-contain cursor-pointer"
+        />
+      </Link>
+      <button
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        className="md:hidden text-white text-2xl focus:outline-none p-2 rounded-full hover:bg-white/10"
+      >
+        {mobileMenuOpen ? "✕" : "☰"}
+      </button>
+    </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8 text-base font-medium ml-auto">
-          <Link
-            href="/#home"
-            className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]"
-          >
-            HOME
-          </Link>
-          <Link
-            href="/#about"
-            className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]"
-          >
-            ABOUT
-          </Link>
-          <Link
-            href="/portfolio"
-            className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]"
-          >
-            WORK
-          </Link>
-          <Link
-            href="/blog"
-            className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]"
-          >
-            BLOG
-          </Link>
-          <a
-            href="https://wa.me/94716295618"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]"
-          >
-            CONTACT
-          </a>
-        </div>
+    {/* Desktop Navigation */}
+    <div className="hidden md:flex space-x-8 text-base font-medium ml-auto">
+      <Link href="/#home" className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">HOME</Link>
+      <Link href="/#about" className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">ABOUT</Link>
+      <Link href="/portfolio" className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">WORK</Link>
+      <Link href="/blog" className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">BLOG</Link>
+      <a href="https://wa.me/94716295618" target="_blank" rel="noopener noreferrer" className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">CONTACT</a>
+    </div>
 
-        {/* Mobile Menu (dropdown inside rounded card) */}
-        {mobileMenuOpen && (
-          <div className="md:hidden w-full mt-4 border-t border-white/20 pt-4 space-y-2 transition-all duration-300">
-            <Link
-              href="/#home"
-              className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-            >
-              HOME
-            </Link>
-            <Link
-              href="/#about"
-              className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-            >
-              ABOUT
-            </Link>
-            <Link
-              href="/portfolio"
-              className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-            >
-              WORK
-            </Link>
-            <Link
-              href="/blog"
-              className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-            >
-              BLOG
-            </Link>
-            <a
-              href="https://wa.me/94716295618"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-            >
-              CONTACT
-            </a>
-          </div>
-        )}
+    {/* Mobile Menu */}
+    {mobileMenuOpen && (
+      <div className="md:hidden w-full mt-4 space-y-2 transition-all duration-300">
+        <Link href="/#home" className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center">HOME</Link>
+        <Link href="/#about" className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center">ABOUT</Link>
+        <Link href="/portfolio" className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center">WORK</Link>
+        <Link href="/blog" className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center">BLOG</Link>
+        <a href="https://wa.me/94716295618" target="_blank" rel="noopener noreferrer" className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center">CONTACT</a>
       </div>
-    </nav>
+    )}
+  </div>
+</nav>
+
 )}
 
       {/* Main Section */}
