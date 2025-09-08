@@ -34,7 +34,7 @@ const blogPosts = [
     slug: "ceylon-cinnamon",
     date: "NOVEMBER 15, 2023",
     image: "/blog/Ceylon Cinnamon.jpg",
-    excerpt: "The Cinnamon industry in Sri Lanka is renowned worldwide for its high-quality cinnamon production. Often referred to...",
+    excerpt: "The aroma is unmistakable sweet, warm, and subtly complex.It is the scent of history, of luxury, and of a...",
   },
   {
     title: "Thelme Costume",

@@ -79,11 +79,29 @@ export const blogPosts = [
     title: "Ceylon Cinnamon",
     date: "NOVEMBER 15, 2023",
     image: "/blog/3.jpg",
-    excerpt: "The Cinnamon industry in Sri Lanka...",
+    excerpt: "The aroma is unmistakable sweet, warm, and subtly complex.",
     tags: ["Sri Lanka", "Export Agriculture", "Quality Cinnamon"],
     author: "Dinuka Gunawardana",
     photographer: "© Dinuka Gunawardana",
-    content: `The Cinnamon industry in Sri Lanka is renowned worldwide for its high-quality cinnamon production. Often referred to as "Ceylon cinnamon," Sri Lanka has been a major player in the global cinnamon market for centuries. The country's lush landscapes, particularly in the southwestern regions, provide the ideal environment for cinnamon cultivation. Cinnamon trees, with their aromatic inner bark, are meticulously harvested and processed, preserving the spice's exquisite flavor and fragrance. Sri Lanka's cinnamon industry plays a vital role in the country's economy, and its exceptional product remains a sought-after ingredient in culinary and medicinal applications around the world..`,
+    content: ` The aroma is unmistakable sweet, warm, and subtly complex. It is the scent of history, of luxury, and of a island nation's most prized export. This is the essence of Ceylon cinnamon, the "true cinnamon" that has made Sri Lanka synonymous with the highest quality spice in the world for centuries. More than just a crop, the cinnamon industry is a vital thread woven into the cultural and economic fabric of the nation.
+
+
+Sri Lanka's tryst with cinnamon dates back millennia. Ancient traders braved perilous journeys to secure this "sweet wood," which was so coveted it was considered a gift fit for monarchs and deities. The island's strategic location along historic maritime routes placed it at the heart of the spice trade, drawing the attention of European colonial powers who fought for control of its cinnamon-rich shores. This rich history is imbued in every strip of bark, a testament to a spice that once shaped empires.
+
+
+The journey of Ceylon cinnamon begins in the lush, tropical landscapes of Sri Lanka's southwestern regions, where the ideal combination of sandy soil, ample rainfall, and humid weather creates the perfect environment for the Cinnamomum verum tree—the Latin name meaning "true cinnamon."
+
+Unlike its more common counterpart, cassia, Ceylon cinnamon is celebrated for its delicate texture and mild, sweet flavour. This superior quality is a direct result of meticulous, time-honoured craftsmanship. The harvest is a skilled process: after nearly two years of growth, the slender shoots are cut down. The inner bark is then carefully scraped and rubbed by hand by skilled workers, known as chandayas, who masterfully peel it away in long, fragile rolls. These rolls are then telescoped into each other, forming the characteristic "quills" that are left to dry slowly in the shade, locking in their exquisite fragrance and flavour.
+
+
+Today, the cinnamon industry remains a cornerstone of Sri Lanka's economy. It is a significant source of foreign exchange and provides livelihoods for hundreds of thousands of people, from farmers and harvesters to processors and exporters. Sri Lanka proudly dominates the global market for high-quality cinnamon, supplying over 80% of the world's true cinnamon.
+
+Its appeal is universal. In the culinary world, Ceylon cinnamon is a versatile superstar. Its subtle sweetness enhances everything from rich curries and hearty stews to delicate desserts, chocolates, and spiced beverages. Health and wellness applications have further amplified its demand. Rich in antioxidants and with anti-inflammatory properties, it is a key ingredient in traditional medicine and modern health supplements alike.
+
+
+As global consumers become more discerning, seeking out authenticity and premium quality, the demand for genuine Ceylon cinnamon continues to rise. The industry is adapting, focusing on sustainable farming practices, value-added products like cinnamon oil and powder, and protecting its unique geographical identity.
+
+From the ancient forests of Sri Lanka to kitchen shelves across the globe, Ceylon cinnamon remains a timeless treasure. It is more than a spice; it is a story of tradition, unparalleled quality, and a nation's enduring gift to the world.`,
   },
   {
     id: 4,
