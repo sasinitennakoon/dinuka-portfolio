@@ -375,7 +375,7 @@ export default function Home() {
 
               <div className="space-y-3">
                 <Counter target={11} />
-                <p className="text-lg font-medium text-[#0D1321] font-[cormorant_garamond]">Working with Professional</p>
+                <p className="text-lg font-medium text-[#0D1321] font-[cormorant_garamond]">Working with Professional Teams</p>
               </div>
             </div>
           </section>

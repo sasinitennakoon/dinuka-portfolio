@@ -3,55 +3,36 @@ import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Noto_Sans_Sinhala } from "next/font/google";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Import the font directly in this component
+// Sinhala font
 const notoSinhala = Noto_Sans_Sinhala({
   subsets: ["sinhala"],
   weight: ["400", "700"],
   display: "swap",
 });
 
-// Function to detect if text contains Sinhala characters
-const containsSinhala = (text) => {
-  return /[\u0D80-\u0DFF]/.test(text);
-};
-
-// Function to split text into Sinhala and non-Sinhala parts
+// Detect Sinhala
+const containsSinhala = (text) => /[\u0D80-\u0DFF]/.test(text);
 const splitSinhalaAndEnglish = (text) => {
   const sinhalaRegex = /[\u0D80-\u0DFF]+/g;
   const parts = [];
-  let lastIndex = 0;
-  let match;
-  
+  let lastIndex = 0,
+    match;
   while ((match = sinhalaRegex.exec(text)) !== null) {
-    // Add text before Sinhala part
     if (match.index > lastIndex) {
-      parts.push({
-        text: text.substring(lastIndex, match.index),
-        isSinhala: false
-      });
+      parts.push({ text: text.substring(lastIndex, match.index), isSinhala: false });
     }
-    
-    // Add Sinhala part
-    parts.push({
-      text: match[0],
-      isSinhala: true
-    });
-    
+    parts.push({ text: match[0], isSinhala: true });
     lastIndex = match.index + match[0].length;
   }
-  
-  // Add remaining text
   if (lastIndex < text.length) {
-    parts.push({
-      text: text.substring(lastIndex),
-      isSinhala: false
-    });
+    parts.push({ text: text.substring(lastIndex), isSinhala: false });
   }
-  
   return parts;
 };
 
+// Blogs
 const blogs = [
   {
     id: 1,
@@ -89,7 +70,7 @@ const blogs = [
     id: 5,
     title: "කෝච්චි පාරේ උසම තැන සොයා ගියෙ​මු",
     date: "AUGUST 03, 2023",
-    excerpt: "“Summit Level” යනු ශ්‍රී ලංකාවේ මධ්‍යම කඳුකරය හරහා දිවෙන ප්‍රධාන දුම්රිය මාර්ගයේ උසම...",
+    excerpt: "Summit Level” යනු ශ්‍රී ලංකාවේ මධ්‍යම කඳුකරය හරහා දිවෙන ප්‍රධාන දුම්රිය මාර්ගයේ උසම...",
     image: "/blog/pattipola.jpg",
     link: "/blog/pattipola-summit-point",
   },
@@ -99,10 +80,20 @@ export default function BlogSection() {
   const containerRef = useRef(null);
   const scrollAmount = useRef(0);
   const animationId = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
-  // ✅ CORRECT - Add curly braces
+  // Detect mobile
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Auto scroll (desktop only)
+  useEffect(() => {
+    if (isMobile) return; // disable auto-scroll on mobile
     const container = containerRef.current;
     if (!container) return;
 
@@ -119,58 +110,63 @@ export default function BlogSection() {
 
     animationId.current = requestAnimationFrame(scroll);
     return () => cancelAnimationFrame(animationId.current);
-  }, [isPaused]);
+  }, [isPaused, isMobile]);
+
+  // Manual scroll with arrows (mobile)
+  const handleScroll = (direction) => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const card = container.querySelector(".blog-card");
+    if (!card) return;
+
+    const cardWidth = card.offsetWidth + 32; // card + gap
+    container.scrollBy({
+      left: direction === "left" ? -cardWidth : cardWidth,
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <section
-      id="blog"
-      className="py-20 px-6 md:px-16 bg-[#E7E7E7] text-black relative"
-    >
+    <section id="blog" className="py-20 px-6 md:px-16 bg-[#E7E7E7] text-black relative">
       <div
         ref={containerRef}
-        className="overflow-hidden w-full cursor-default select-none"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+        className={`w-full cursor-default select-none relative ${
+          isMobile ? "overflow-x-auto flex snap-x snap-mandatory" : "overflow-hidden"
+        }`}
+        onMouseEnter={() => !isMobile && setIsPaused(true)}
+        onMouseLeave={() => !isMobile && setIsPaused(false)}
       >
-        <div className="flex gap-8 w-max">
+        <div className={`flex gap-8 w-max ${isMobile ? "mx-auto" : ""}`}>
           {[...blogs, ...blogs].map((blog, index) => {
             const titleParts = splitSinhalaAndEnglish(blog.title);
-            const dateParts = containsSinhala(blog.date) 
-              ? splitSinhalaAndEnglish(blog.date) 
-              : null;
-            const excerptParts = containsSinhala(blog.excerpt) 
-              ? splitSinhalaAndEnglish(blog.excerpt) 
-              : null;
-            
+            const dateParts = containsSinhala(blog.date) ? splitSinhalaAndEnglish(blog.date) : null;
+            const excerptParts = containsSinhala(blog.excerpt) ? splitSinhalaAndEnglish(blog.excerpt) : null;
+
             return (
               <Link
                 href={blog.link}
                 key={`${blog.id}-${index}`}
-                className="flex-shrink-0 w-80 min-h-[430px] bg-[#FFFBEE] rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all border border-black text-left h-110"
+                className={`blog-card flex-shrink-0 w-80 min-h-[430px] bg-[#FFFBEE] rounded-xl shadow-lg overflow-hidden 
+                  hover:shadow-2xl transition-all border border-black text-left 
+                  ${isMobile ? "snap-center" : ""}`}
               >
                 <div className="relative w-full h-48 p-2">
                   <div className="w-full h-full relative rounded-t-lg overflow-hidden border border-[#0D1321]">
-                    <Image
-                      src={blog.image}
-                      alt={blog.title}
-                      fill
-                      loading="lazy"
-                      className="object-cover"
-                    />
+                    <Image src={blog.image} alt={blog.title} fill loading="lazy" className="object-cover" />
                   </div>
                 </div>
-
                 <div className="p-4">
-                  {/* Apply Sinhala font only to Sinhala parts of the title */}
                   <h3 className="text-3xl font-bold mb-2 text-center">
                     {titleParts.map((part, i) => (
-                      <span key={i} className={part.isSinhala ? notoSinhala.className : "font-[playfair_display]"}>
+                      <span
+                        key={i}
+                        className={part.isSinhala ? notoSinhala.className : "font-[playfair_display]"}
+                      >
                         {part.text}
                       </span>
                     ))}
                   </h3>
-                  
-                  {/* Apply Sinhala font only to Sinhala dates */}
                   <p className="text-xs text-gray-500 text-left">
                     {dateParts ? (
                       dateParts.map((part, i) => (
@@ -182,14 +178,14 @@ export default function BlogSection() {
                       blog.date
                     )}
                   </p>
-                  
                   <br />
-                  
-                  {/* Apply Sinhala font only to Sinhala excerpts */}
                   <p className="text-sm text-gray-700">
                     {excerptParts ? (
                       excerptParts.map((part, i) => (
-                        <span key={i} className={part.isSinhala ? notoSinhala.className : "font-[DM_Sans]"}>
+                        <span
+                          key={i}
+                          className={part.isSinhala ? notoSinhala.className : "font-[DM_Sans]"}
+                        >
                           {part.text}
                         </span>
                       ))
@@ -203,6 +199,24 @@ export default function BlogSection() {
           })}
         </div>
       </div>
+
+      {/* Arrow buttons (mobile only) */}
+      {isMobile && (
+        <>
+          <button
+            onClick={() => handleScroll("left")}
+            className="absolute top-1/2 left-4 -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-lg z-10"
+          >
+            <ChevronLeft size={22} />
+          </button>
+          <button
+            onClick={() => handleScroll("right")}
+            className="absolute top-1/2 right-4 -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-lg z-10"
+          >
+            <ChevronRight size={22} />
+          </button>
+        </>
+      )}
     </section>
   );
 }

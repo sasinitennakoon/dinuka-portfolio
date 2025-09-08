@@ -170,9 +170,9 @@ export default function GraphicDesignPage() {
           </div>
           <br />
           <Image
-            src="/design/11.jpg"
+            src="/design/youtube banner.jpg"
             alt="Poster 11"
-            width={600}
+            width={1000}
             height={800}
             className="w-full mb-4 rounded  object-cover shadow-xl fade-in-image opacity-0 translate-y-6 transition-all duration-[2000ms] ease-in-out delay-[1800ms]"
           />

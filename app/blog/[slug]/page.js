@@ -36,6 +36,12 @@ export default function BlogDetailPage({ params }) {
   const wordCount = post?.content?.split(' ').length || 0;
   const readingTime = Math.ceil(wordCount / 200);
 
+  const handleAboutClick = () => {
+  console.log("About clicked!");
+  setMobileMenuOpen(false); // maybe you want to close the menu
+};
+
+
   useEffect(() => {
     const handleScroll = () => {
       setShowArrows(window.scrollY > 150);
@@ -76,12 +82,16 @@ export default function BlogDetailPage({ params }) {
       {/* Sticky Navbar - Fixed to prevent jumping */}
       <nav
         ref={navRef}
-        className="fixed top-4 left-1/2 -translate-x-1/2 z-50 shadow-md transition-opacity duration-500 ease-in-out opacity-100 rounded-full"
+        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 shadow-md transition-[opacity,transform] duration-500 ease-in-out ${
+          navVisible ? "opacity-100 translate-y-0" : "-translate-y-full opacity-0"
+        }`}
         style={{
-          background: "linear-gradient(90deg, rgba(29,42,65,0.9) 0%, rgba(13,19,33,0.9) 50%, rgba(29,42,65,0.9) 100%)",
+          background:
+            "linear-gradient(90deg, rgba(29,42,65,0.9) 0%, rgba(13,19,33,0.9) 50%, rgba(29,42,65,0.9) 100%)",
           backdropFilter: "blur(10px)",
           width: "calc(100% - 3rem)",
           maxWidth: "1400px",
+          borderRadius: mobileMenuOpen ? "1rem" : "9999px",
         }}
       >
         <div className="flex flex-col md:flex-row items-center px-8 py-4">
@@ -113,12 +123,12 @@ export default function BlogDetailPage({ params }) {
             >
               HOME
             </Link>
-            <Link
-              href="/#about"
+            <button
+              onClick={handleAboutClick}
               className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]"
             >
               ABOUT
-            </Link>
+            </button>
             <Link
               href="/portfolio"
               className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]"
@@ -141,58 +151,46 @@ export default function BlogDetailPage({ params }) {
             </a>
           </div>
 
-          {/* Mobile Menu - Fixed to appear below navbar without affecting its size */}
+          {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div 
-              className="md:hidden absolute top-full left-0 right-0 mt-2 py-4 px-6 rounded-2xl z-50"
-              style={{
-                background: "linear-gradient(90deg, rgba(29,42,65,0.95) 0%, rgba(13,19,33,0.95) 100%)",
-                backdropFilter: "blur(10px)",
-              }}
-            >
-              <div className="flex flex-col space-y-3 text-white">
-                <Link
-                  href="/#home"
-                  className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  HOME
-                </Link>
-                <Link
-                  href="/#about"
-                  className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  ABOUT
-                </Link>
-                <Link
-                  href="/portfolio"
-                  className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  WORK
-                </Link>
-                <Link
-                  href="/blog"
-                  className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  BLOG
-                </Link>
-                <a
-                  href="https://wa.me/94716295618"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  CONTACT
-                </a>
-              </div>
+            <div className="md:hidden w-full mt-4 space-y-2 transition-all duration-300">
+              <Link
+                href="/#home"
+                className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
+              >
+                HOME
+              </Link>
+              <button
+                onClick={handleAboutClick}
+                className="block w-full text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
+              >
+                ABOUT
+              </button>
+              <Link
+                href="/portfolio"
+                className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
+              >
+                WORK
+              </Link>
+              <Link
+                href="/blog"
+                className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
+              >
+                BLOG
+              </Link>
+              <a
+                href="https://wa.me/94716295618"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
+              >
+                CONTACT
+              </a>
             </div>
           )}
         </div>
       </nav>
+
 
       {/* Add padding to main content to account for fixed navbar */}
       <main className="relative bg-[#E7E7E7] min-h-screen flex flex-col items-center px-4 md:px-10 pt-42 pb-10 text-black">
@@ -286,14 +284,14 @@ export default function BlogDetailPage({ params }) {
                 {post.tags?.map((tag, i) => (
                   <span
                     key={i}
-                    className="bg-white px-4 py-1 text-sm sm:text-base rounded-full font-medium border border-black"
+                    className="bg-white px-4 py-1 text-sm sm:text-xs rounded-full font-medium border border-black"
                   >
                     #{tag}
                   </span>
                 ))}
               </div>
 
-              <div className="flex flex-wrap gap-y-2 gap-x-4 sm:gap-x-6 text-base sm:text-lg md:text-xl text-gray-600 italic mb-6">
+              <div className="flex flex-wrap gap-y-2 gap-x-4 sm:gap-x-6 text-base sm:text-xs md:text-m text-gray-600 italic mb-6">
                 <span className="block w-full sm:w-auto">📅 Published on {post.date}</span>
                 <span className="block w-full sm:w-auto">⏱️ {readingTime} min read</span>
                 <span className="block w-full sm:w-auto">

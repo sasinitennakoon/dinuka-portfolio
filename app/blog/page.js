@@ -177,12 +177,12 @@ export default function BlogPage() {
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <div className="md:hidden w-full mt-4 space-y-2 transition-all duration-300">
-              <a
-                href="#home"
+              <Link
+                href="/#home"
                 className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
               >
                 HOME
-              </a>
+              </Link>
               <button
                 onClick={handleAboutClick}
                 className="block w-full text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"

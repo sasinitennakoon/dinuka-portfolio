@@ -42,7 +42,7 @@ const AutoScrollingClients = () => {
     <div ref={containerRef} className="relative w-full overflow-hidden py-6">
       <div className="flex gap-12 w-max">
         {/* Duplicate logos twice for smooth wrap-around */}
-        {[...logos, ...logos].map((logo, index) => (
+        {[...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos].map((logo, index) => (
           <div
             key={`${logo.id}-${index}`}
             className="flex-shrink-0 w-52 h-28 relative"
