@@ -1,12 +1,13 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import { motion, useAnimation, useInView, AnimatePresence} from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import AutoScrollingClients from '../components/AutoScrollingClients.js';
 import BlogSection from '../components/blogSection.js';
 import Counter from '../components/Counter.js';
 import { Playfair_Display } from 'next/font/google'
+import { useRouter } from "next/navigation";
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -25,6 +26,23 @@ export default function Home() {
   const isInView = useInView(aboutRef, { margin: '-100px' });
   const imageControls = useAnimation();
   const textControls = useAnimation();
+
+  const router = useRouter();
+
+const handleAboutClick = (e) => {
+  e.preventDefault();
+  router.push("/#about");
+
+  setTimeout(() => {
+    if (typeof window !== "undefined") {
+      const aboutSection = document.getElementById("about");
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, 500);
+};
+
   
   
   const containerVariants = {
@@ -157,71 +175,90 @@ export default function Home() {
       ) : (
         <>
           {/* Navbar */}
-          <nav
-            ref={navRef}
-            className={`fixed top-4 left-1/2 -translate-x-1/2 z-50  shadow-md opacity-0 transition-opacity duration-500 ease-in-out ${
-              !showWelcome ? 'opacity-100' : 'opacity-0 pointer-events-none'
-            } ${
-              navVisible ? 'translate-y-0' : '-translate-y-full'
-            }`}
-            style={{
-              background: 'linear-gradient(90deg, rgba(29,42,65,0.9) 0%, rgba(13,19,33,0.9) 50%, rgba(29,42,65,0.9) 100%)',
-              backdropFilter: 'blur(10px)',
-              width: 'calc(100% - 3rem)',
-              maxWidth: '1400px',
-              borderRadius: mobileMenuOpen ? '1rem' : '9999px',
-            }}
-          >
-            <div className="flex justify-between items-center px-8 py-4">
-              {/* Logo/Brand Name */}
-              <div className="w-100">
-                <a href="#home">
-                  <Image 
-                    src="/signature-dinuka.png" 
-                    alt="Signature" 
-                    width={200} 
-                    height={30} 
-                    className="cursor-pointer" // Optional: adds pointer cursor on hover
-                  />
-                </a>
-              </div>
+          {/* Navigation */}
+<motion.nav
+  ref={navRef}
+  initial={{ y: -100, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
+    navVisible ? "opacity-100 translate-y-0" : "-translate-y-full opacity-0"
+  }`}
+  style={{
+    background: "linear-gradient(135deg, rgba(29,42,65,0.95) 0%, rgba(13,19,33,0.95) 100%)",
+    backdropFilter: "blur(20px)",
+    width: "calc(100% - 3rem)",
+    maxWidth: "1400px",
+    borderRadius: mobileMenuOpen ? "1.5rem" : "2rem",
+    transition: "border-radius 0.4s ease",
+    border: "1px solid rgba(255,255,255,0.1)",
+  }}
+>
+  <div className="flex flex-col md:flex-row items-center px-6 py-3">
+    {/* Logo + Mobile Button */}
+    <div className="flex justify-between w-full items-center md:w-auto">
+      <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0">
+        <Link href="/#home">
+          <Image
+            src="/signature-dinuka.png"
+            alt="Signature"
+            width={180}
+            height={28}
+            className="object-contain cursor-pointer brightness-0 invert"
+          />
+        </Link>
+      </motion.div>
 
-              {/* Desktop Navigation */}
-              <div className="hidden md:flex space-x-8 text-base font-medium">
-                <a href="#home" className="text-[#E7E7E7] hover:text-gray-300 transition-colors px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">HOME</a>
-                <a href="#about" className="text-[#E7E7E7] hover:text-gray-300 transition-colors px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">ABOUT</a>
-                <Link href="/portfolio" className="text-[#E7E7E7] hover:text-gray-300 transition-colors px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">WORK</Link>
-                <Link href="/blog" className="text-[#E7E7E7] hover:text-gray-300 transition-colors px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">BLOG</Link>
-                <a href="https://wa.me/94716295618" target="_blank" rel="noopener noreferrer" className="text-[#E7E7E7] hover:text-gray-300 transition-colors px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">CONTACT</a>
-              </div>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        className="md:hidden text-white text-xl p-2 rounded-full hover:bg-white/10 transition-colors"
+      >
+        {mobileMenuOpen ? "✕" : "☰"}
+      </motion.button>
+    </div>
 
-              {/* Mobile Menu Button */}
-              <div className="md:hidden">
-                <button
-                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="text-white text-2xl focus:outline-none p-2 rounded-full hover:bg-white/10"
-                  
-                >
-                  {mobileMenuOpen ? '✕' : '☰'}
-                  
-                </button>
-              </div>
-            </div>
+    {/* Desktop Links */}
+    <div className="hidden md:flex space-x-2 text-sm font-medium ml-auto mr-4">
+      {["HOME", "ABOUT", "WORK", "BLOG", "CONTACT"].map((item) => (
+        <Link
+          key={item}
+          href={item === "WORK" ? "/portfolio" : item === "HOME" ? "/#home" : `/${item.toLowerCase()}`}
+          className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter]"
+        >
+          {item}
+        </Link>
+      ))}
+    </div>
 
-            {/* Mobile Menu */}
-            {mobileMenuOpen && (
-              <div className="md:hidden mt-2 py-4 px-6">
-                <div className="flex flex-col space-y-3 text-white">
-                  <a href="#home" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter] text-center ">HOME</a>
-                  <a href="#about" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter] text-center">ABOUT</a>
-                  <Link href="/portfolio" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter] text-center">WORK</Link>
-                  <Link href="/blog" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter] text-center">BLOG</Link>
-                  <a href="https://wa.me/94716295618" target="_blank" rel="noopener noreferrer" className="hover:text-[#E7E7E7] py-2 px-4 rounded-full hover:bg-white/10 font-[Inter] text-center">CONTACT</a>
-                </div>
-              </div>
-            )}
-
-          </nav>
+    {/* Mobile Menu with border lines */}
+    <AnimatePresence>
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden w-full mt-4 space-y-2 overflow-hidden"
+        >
+          {["HOME", "ABOUT", "WORK", "BLOG", "CONTACT"].map((item) => (
+            <motion.div
+              key={item}
+              whileHover={{ x: 10 }}
+              className="border-l-2 border-white/20 pl-4"
+            >
+              <Link
+                href={item === "WORK" ? "/portfolio" : item === "HOME" ? "/#home" : `/${item.toLowerCase()}`}
+                className="block text-white/80 hover:text-white py-3 text-left transition-all font-[Inter]"
+              >
+                {item}
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+</motion.nav>
 
 
           <section id="home" className="relative w-full h-screen pt-20 overflow-hidden">
@@ -374,7 +411,7 @@ export default function Home() {
               </div>
 
               <div className="space-y-3">
-                <Counter target={11} />
+                <Counter target={20} suffix="+" />
                 <p className="text-lg font-medium text-[#0D1321] font-[cormorant_garamond]">Working with Professional Teams</p>
               </div>
             </div>
@@ -425,42 +462,69 @@ export default function Home() {
           </section>
 
           {/* Services Section */}
-          <section id="services" className="py-20 px-6 md:px-16 bg-[#E7E7E7] text-black">
-            <h1 className="text-6xl font-bold mb-4 font-[playfair_display] text-[#0D1321] text-center">
-              Here&apos;s What I Create
-            </h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-              {services.map((service, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: -40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: service.delay }}
-                  viewport={{ once: false, amount: 0.4 }}
-                >
-                  <Link
-                    href={service.href}
-                    className="group bg-white rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden h-96 border border-[#0D1321] flex flex-col items-center justify-center text-center"
-                  >
-                    <Image
-                      src={service.img}
-                      alt={service.title}
-                      width={160}
-                      height={160}
-                      className="object-contain"
-                    />
-
-                    <div className="p-4">
-                      <h3 className="text-3xl font-semibold mb-2 group-hover:text-[#0D1321] transition font-[cormorant_garamond]">
-                        {service.title}
-                      </h3>
-                      <p className="text-[#0D1321] text-sm font-[DM_sans]">{service.desc}</p>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
+<section id="services" className="py-20 px-6 md:px-16 bg-gradient-to-br from-gray-50 to-gray-100 text-black">
+  <div className="max-w-7xl mx-auto">
+    <div className="text-center mb-16">
+      <h1 className="text-5xl md:text-6xl font-bold mb-6 font-[playfair_display] text-[#0D1321]">
+        Here&apos;s What I Create
+      </h1>
+      <div className="w-24 h-1 bg-gradient-to-r from-[#0D1321] to-gray-400 mx-auto"></div>
+    </div>
+    
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {services.map((service, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: service.delay }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="h-full"
+        >
+          <Link
+            href={service.href}
+            className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-500 ease-out overflow-hidden h-full flex flex-col border border-gray-200 hover:border-[#0D1321]/20"
+          >
+            {/* Improved Image Container */}
+            <div className="relative h-52 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden p-6">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#0D1321_1px,transparent_1px)] [background-size:16px_16px]"></div>
+              
+              <Image
+                src={service.img}
+                alt={service.title}
+                width={140}
+                height={140}
+                className="object-contain transform group-hover:scale-105 transition-transform duration-500 ease-out z-10 drop-shadow-lg"
+              />
+              
+              {/* Subtle Hover Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#0D1321]/0 via-[#0D1321]/0 to-[#0D1321]/5 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+              
+              {/* Corner Accent */}
+              <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-[#0D1321] to-transparent opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
             </div>
-          </section>
+
+            {/* Content Container */}
+            <div className="p-6 flex-1 flex flex-col justify-center">
+              <h3 className="text-2xl font-semibold mb-3 text-[#0D1321] group-hover:text-[#0D1321]/90 transition-colors duration-300 font-[cormorant_garamond] text-center">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed font-[DM_sans] text-center">
+                {service.desc}
+              </p>
+              
+              {/* Hover Indicator */}
+              <div className="mt-4 flex justify-center">
+                <div className="w-8 h-0.5 bg-[#0D1321] transform group-hover:scale-x-150 transition-transform duration-300"></div>
+              </div>
+            </div>
+          </Link>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
           
           {/* Clients*/}
           <section id="clients" className="py-20 px-2 md:px-4 bg-[#FFFBEE] text-[#0D1321]">

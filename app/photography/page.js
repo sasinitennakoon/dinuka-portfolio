@@ -2,7 +2,9 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence} from 'framer-motion';
+import { useRouter } from 'next/navigation';
+
 
 export default function PhotographyPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -92,6 +94,14 @@ export default function PhotographyPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [mobileMenuOpen]);
 
+
+  const handleAboutClick = () => {
+    const aboutSection = document.querySelector('#about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+      setMobileMenuOpen(false);
+    }
+  };
   return (
     <>
       {/* Lightbox */}
@@ -115,34 +125,113 @@ export default function PhotographyPage() {
       )}
 
       {/* Navbar */}
-      {!lightboxOpen && (
-        <nav ref={navRef} className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 shadow-md transition-[opacity,transform] duration-500 ease-in-out ${navVisible ? "opacity-100 translate-y-0" : "-translate-y-full opacity-0"} ${mobileMenuOpen ? "rounded-xl" : "rounded-full"}`} style={{background: "linear-gradient(90deg, rgba(29,42,65,0.9) 0%, rgba(13,19,33,0.9) 50%, rgba(29,42,65,0.9) 100%)", backdropFilter: "blur(10px)", width: "calc(100% - 3rem)", maxWidth: "1400px", overflow: "hidden"}}>
-          <div className="flex flex-col md:flex-row items-center px-8 py-4">
-            <div className="flex justify-between w-full items-center md:w-auto">
-              <Link href="/#home" className="flex-shrink-0">
-                <Image src="/signature-dinuka.png" alt="Signature" width={200} height={30} className="object-contain cursor-pointer" priority />
-              </Link>
-              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden text-white text-2xl focus:outline-none p-2 rounded-full hover:bg-white/10">{mobileMenuOpen ? "✕" : "☰"}</button>
-            </div>
-            <div className="hidden md:flex space-x-8 text-base font-medium ml-auto">
-              <Link href="/#home" className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">HOME</Link>
-              <Link href="/#about" className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">ABOUT</Link>
-              <Link href="/portfolio" className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">WORK</Link>
-              <Link href="/blog" className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">BLOG</Link>
-              <a href="https://wa.me/94716295618" target="_blank" rel="noopener noreferrer" className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]">CONTACT</a>
-            </div>
-            {mobileMenuOpen && (
-              <div className="md:hidden w-full mt-4 space-y-2 transition-all duration-300">
-                <Link href="/#home" className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center">HOME</Link>
-                <Link href="/#about" className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center">ABOUT</Link>
-                <Link href="/portfolio" className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center">WORK</Link>
-                <Link href="/blog" className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center">BLOG</Link>
-                <a href="https://wa.me/94716295618" target="_blank" rel="noopener noreferrer" className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center">CONTACT</a>
-              </div>
-            )}
-          </div>
-        </nav>
-      )}
+       <motion.nav
+         ref={navRef}
+         initial={{ y: -100, opacity: 0 }}
+         animate={{ y: 0, opacity: 1 }}
+         className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
+           navVisible ? "opacity-100 translate-y-0" : "-translate-y-full opacity-0"
+         }`}
+         style={{
+           background: "linear-gradient(135deg, rgba(29,42,65,0.95) 0%, rgba(13,19,33,0.95) 100%)",
+           backdropFilter: "blur(20px)",
+           width: "calc(100% - 3rem)",
+           maxWidth: "1400px",
+           borderRadius: mobileMenuOpen ? "1.5rem" : "2rem",
+           transition: "border-radius 0.4s ease",
+           border: "1px solid rgba(255,255,255,0.1)",
+           overflow: "hidden",
+         }}
+       >
+         <div className="flex flex-col md:flex-row items-center px-6 py-3">
+           {/* Logo + Mobile Toggle */}
+           <div className="flex justify-between w-full items-center md:w-auto">
+             <Link href="/#home" className="flex-shrink-0">
+               <Image
+                 src="/signature-dinuka.png"
+                 alt="Signature"
+                 width={180}
+                 height={28}
+                 className="object-contain cursor-pointer brightness-0 invert"
+               />
+             </Link>
+       
+             <button
+               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+               className="md:hidden text-white text-2xl p-2 rounded-full hover:bg-white/10 transition-colors"
+             >
+               {mobileMenuOpen ? "✕" : "☰"}
+             </button>
+           </div>
+       
+           {/* Desktop Navigation */}
+           <div className="hidden md:flex space-x-2 text-sm font-medium ml-auto mr-4">
+             {["HOME", "ABOUT", "WORK", "BLOG", "CONTACT"].map((item) =>
+               item === "CONTACT" ? (
+                 <a
+                   key={item}
+                   href="https://wa.me/94716295618"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter]"
+                 >
+                   {item}
+                 </a>
+               ) : (
+                 <Link
+                   key={item}
+                   href={item === "WORK" ? "/portfolio" : item === "HOME" ? "/#home" : `/${item.toLowerCase()}`}
+                   className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter]"
+                 >
+                   {item}
+                 </Link>
+               )
+             )}
+           </div>
+       
+           {/* Mobile Menu */}
+           <AnimatePresence>
+             {mobileMenuOpen && (
+               <motion.div
+                 initial={{ opacity: 0, height: 0 }}
+                 animate={{ opacity: 1, height: "auto" }}
+                 exit={{ opacity: 0, height: 0 }}
+                 className="md:hidden w-full mt-4 space-y-2 overflow-hidden"
+               >
+                 {["HOME", "ABOUT", "WORK", "BLOG", "CONTACT"].map((item) => (
+                   <motion.div
+                     key={item}
+                     whileHover={{ x: 10 }}
+                     className="border-l-2 border-white/20 pl-4"
+                   >
+                     {item === "CONTACT" ? (
+                       <a
+                         href="https://wa.me/94716295618"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         className="block text-white/80 hover:text-white py-3 text-left transition-all font-[Inter]"
+                       >
+                         {item}
+                       </a>
+                     ) : (
+                       <Link
+                         href={item === "WORK" ? "/portfolio" : item === "HOME" ? "/#home" : `/${item.toLowerCase()}`}
+                         className="block text-white/80 hover:text-white py-3 text-left transition-all font-[Inter]"
+                       >
+                         {item}
+                       </Link>
+                     )}
+                   </motion.div>
+                 ))}
+               </motion.div>
+             )}
+           </AnimatePresence>
+         </div>
+       </motion.nav>
+       
+       
+
+    
 
       <main className="bg-[#E7E7E7] min-h-screen px-6 md:px-20 pt-42 pb-20">
         {/* Back button */}
