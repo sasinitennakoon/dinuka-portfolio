@@ -56,7 +56,7 @@ export const metadata = {
     type: "website",
   },
   icons: {
-    icon: "/favicon.ico", // Recommended for Google
+    icon: "/favicon.ICO", // Recommended for Google
   },
 };
 
