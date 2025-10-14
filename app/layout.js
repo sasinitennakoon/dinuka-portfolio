@@ -28,7 +28,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Dinuka Gunawardana | Creative Visual Artist",
   description:
-    "I'm Dinuka Gunawardana — a Creative Visual Artist. Explore my portfolio, creative works, and design case studies.",
+    "I'm Dinuka Gunawardana — a Creative Visual Artist. Explore my portfolio, creative works.",
   keywords: [
     "Dinuka Gunawardana",
     "Creative Visual Artist",
@@ -42,7 +42,7 @@ export const metadata = {
     title: "Dinuka Gunawardana | Creative Visual Artist",
     description:
       "Explore Dinuka Gunawardana’s work in creative visual arts. Discover projects, case studies, and more.",
-    url: "https://www.dinukagunawardana.we.lk",
+    url: "https://www.dinukagunawardana.web.lk",
     siteName: "Dinuka Gunawardana",
     images: [
       {
@@ -69,7 +69,7 @@ export default function RootLayout({ children }) {
       <body className="antialiased">
         {/* Google Analytics */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+          src="https://www.googletagmanager.com/gtag/js?id=G-Y42QBFZZPQ"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
