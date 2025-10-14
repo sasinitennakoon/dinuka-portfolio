@@ -8,10 +8,12 @@ import { useRouter } from 'next/navigation';
 export default function PortfolioPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
-  const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
   const navRef = useRef(null);
 
+  const router = useRouter();
+
+  // Navigation scroll effect
   useEffect(() => {
     let lastScrollY = window.scrollY;
     const handleScroll = () => {
@@ -22,16 +24,6 @@ export default function PortfolioPage() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const router = useRouter();
 
   const handleAboutClick = (e) => {
     e.preventDefault();
@@ -212,7 +204,7 @@ export default function PortfolioPage() {
 
       {/* Main Content */}
       <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-gray-100 px-6 pt-32 md:px-12 lg:px-20 pb-20">
-        {/* Hero Section - Original Headings */}
+        {/* Hero Section */}
         <motion.section
           className="text-center mb-16"
           initial={{ opacity: 0, y: 40 }}
@@ -223,32 +215,29 @@ export default function PortfolioPage() {
             Explore My Creative Work
           </h1>
           <p className="text-lg md:text-xl text-gray-700 font-[cormorant_garamond]">
-            A showcase of visual storytelling through the lens of design & media
+            A showcase of visual storytelling through the lens of design &amp; media
           </p>
         </motion.section>
 
-        {/* Portfolio Grid - Mobile Compatible Effects */}
+        {/* Portfolio Grid */}
         <section className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {portfolioItems.map((item, index) => (
+            {portfolioItems.map((item) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
+                transition={{ duration: 0.6 }}
                 className="relative"
               >
                 <Link href={item.href}>
                   <div 
-                    className={`relative rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ${item.color} border border-gray-200
-                      ${activeCard === item.id ? 'shadow-2xl -translate-y-2' : ''}
-                    `}
+                    className={`relative rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ${item.color} border border-gray-200`}
                     onMouseEnter={() => setActiveCard(item.id)}
                     onMouseLeave={() => setActiveCard(null)}
                     onTouchStart={() => setActiveCard(item.id)}
                     onTouchEnd={() => setTimeout(() => setActiveCard(null), 300)}
                   >
-                    {/* Background Image */}
                     <div className="aspect-[3/4] relative overflow-hidden">
                       <Image
                         src={item.image}
@@ -258,26 +247,16 @@ export default function PortfolioPage() {
                           activeCard === item.id ? 'scale-105' : 'scale-100'
                         }`}
                       />
-                      
-                      {/* Gradient Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                      
-                      {/* Color Strip Effect - Works on both desktop and mobile */}
                       <div 
-                        className={`absolute top-0 left-0 w-1 transition-all duration-700 ${
-                          item.accent
-                        } ${
-                          activeCard === item.id ? 'h-full' : 'h-0'
-                        }`}
+                        className={`absolute top-0 left-0 w-1 transition-all duration-700 ${item.accent} ${activeCard === item.id ? 'h-full' : 'h-0'}`}
                       />
-                      
-                      {/* Content */}
                       <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                         <motion.div
                           className="flex flex-col"
                           initial={{ opacity: 0, y: 10 }}
                           whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
+                          transition={{ duration: 0.5 }}
                         >
                           <h3 className="text-2xl font-bold font-[cormorant_garamond] mb-2">
                             {item.title}
@@ -285,34 +264,8 @@ export default function PortfolioPage() {
                           <p className="text-gray-200 font-[DM_sans] text-sm mb-4">
                             {item.description}
                           </p>
-                          
-                          {/* Animated Arrow */}
-                          <motion.div
-                            className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center ml-auto transition-all duration-300"
-                            animate={{
-                              scale: activeCard === item.id ? 1.1 : 1,
-                              backgroundColor: activeCard === item.id ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.2)'
-                            }}
-                          >
-                            <motion.span
-                              className="text-lg"
-                              animate={{ 
-                                x: activeCard === item.id ? 3 : 0 
-                              }}
-                              transition={{ duration: 0.3 }}
-                            >
-                              →
-                            </motion.span>
-                          </motion.div>
                         </motion.div>
                       </div>
-
-                      {/* Hover/Touch Effect */}
-                      <div 
-                        className={`absolute inset-0 transition-all duration-300 ${
-                          activeCard === item.id ? 'bg-black/20' : 'bg-black/0'
-                        }`}
-                      />
                     </div>
                   </div>
                 </Link>
@@ -322,18 +275,13 @@ export default function PortfolioPage() {
         </section>
 
         {/* Call to Action */}
-        <motion.section
-          className="text-center mt-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
+        <motion.section className="text-center mt-20" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }}>
           <div className="bg-gradient-to-r from-[#0D1321] to-gray-900 rounded-2xl p-8 md:p-12 text-white">
             <h2 className="text-3xl md:text-5xl font-bold font-[playfair_display] mb-6">
               Ready to Create Something Amazing?
             </h2>
             <p className="text-lg md:text-xl text-gray-300 font-[cormorant_garamond] mb-8 max-w-2xl mx-auto">
-              Let's collaborate to bring your creative vision to life through stunning visuals and compelling stories.
+              Let&apos;s collaborate to bring your creative vision to life through stunning visuals and compelling stories.
             </p>
             <motion.a
               href="https://wa.me/94716295618"
@@ -344,10 +292,7 @@ export default function PortfolioPage() {
               className="inline-flex items-center gap-3 bg-white text-[#0D1321] px-6 md:px-8 py-3 md:py-4 rounded-full font-bold font-[Inter] text-base md:text-lg hover:shadow-2xl transition-all duration-300"
             >
               Start a Project
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
+              <motion.span animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
                 →
               </motion.span>
             </motion.a>
@@ -356,16 +301,13 @@ export default function PortfolioPage() {
       </main>
 
       {/* Footer */}
-       <footer className="bg-[#0D1321] text-white w-full py-6">
+      <footer className="bg-[#0D1321] text-white w-full py-6">
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center gap-2 text-center">
-          {/* Copyright */}
           <div className="text-sm text-[#FFFBEE] font-[DM_sans]">
             © {new Date().getFullYear()} Dinuka Gunawardana. All rights reserved.
           </div>
-
-          {/* Developer credit */}
           <div className="text-xs text-[#FFFBEE] font-[DM_sans]">
-            Designed & Developed by{' '}
+            Designed &amp; Developed by{' '}
             <a
               href="https://sasini-tennakoon.vercel.app/"
               target="_blank"
@@ -377,28 +319,6 @@ export default function PortfolioPage() {
           </div>
         </div>
       </footer>
-
-      {/* Scroll to Top 
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-purple-600 to-blue-600 text-white w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 backdrop-blur-sm"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <motion.span
-              animate={{ y: [0, -2, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              ↑
-            </motion.span>
-          </motion.button>
-        )}
-      </AnimatePresence>*/}
     </>
   );
 }
