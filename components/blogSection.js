@@ -45,7 +45,7 @@ const blogs = [
   {
     id: 2,
     title: "අභිමානවත් නිදහසේ අනුස්මරණ​ය",
-    date: "MARCH 25, 2024",
+    date: "March 25, 2024",
     excerpt: "නිදහස සිහිගන්වමින් ඉදිකෙරුණු නිදහස් අනුස්මරණ ශාලාව එසේත් නැත්නම් නිදහස් චතුරස්‍රය...",
     image: "/blog/1700150925743.jpeg.jpg",
     link: "/blog/independent-square",
@@ -53,7 +53,7 @@ const blogs = [
   {
     id: 3,
     title: "Ceylon Cinnamon",
-    date: "NOVEMBER 15, 2023",
+    date: "November 15, 2023",
     excerpt: "The aroma is unmistakable sweet, warm, and subtly complex.It is the scent of history, of luxury, and of a...",
     image: "/blog/Ceylon Cinnamon.jpg",
     link: "/blog/ceylon-cinnamon",
@@ -61,7 +61,7 @@ const blogs = [
   {
     id: 4,
     title: "Thelme Costume",
-    date: "AUGUST 12, 2023",
+    date: "August 12, 2023",
     excerpt: "Thelme costume may refer to as the main costume of low country dance tradition. This costume arrangement is very...",
     image: "/blog/Thelme Costume.jpg",
     link: "/blog/thelme-costume",
@@ -69,7 +69,7 @@ const blogs = [
   {
     id: 5,
     title: "කෝච්චි පාරේ උසම තැන සොයා ගියෙ​මු",
-    date: "AUGUST 03, 2023",
+    date: "August 03, 2023",
     excerpt: "Summit Level” යනු ශ්‍රී ලංකාවේ මධ්‍යම කඳුකරය හරහා දිවෙන ප්‍රධාන දුම්රිය මාර්ගයේ උසම...",
     image: "/blog/pattipola.jpg",
     link: "/blog/pattipola-summit-point",
@@ -177,7 +177,7 @@ export default function BlogSection() {
                         ))}
                       </h3>
 
-                      <p className="text-sm text-gray-500 mb-2 text-left">
+                      <p className="text-xs text-gray-500 mb-2 text-left">
                         {dateParts ? (
                           dateParts.map((part, i) => (
                             <span key={i} className={part.isSinhala ? notoSinhala.className : ""}>

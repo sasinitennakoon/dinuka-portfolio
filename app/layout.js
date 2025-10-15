@@ -24,39 +24,54 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// SEO Metadata
+// SEO Metadata - OPTIMIZED FOR SEARCH ENGINES
 export const metadata = {
-  title: "Dinuka Gunawardana | Creative Visual Artist",
+  // --- Primary SEO Tags ---
+  title: "Dinuka Gunawardana | Visual Artist & Creative Services in Colombo",
   description:
-    "I'm Dinuka Gunawardana — a Creative Visual Artist. Explore my portfolio, creative works.",
+    "Multidisciplinary visual artist & dedicated freelancer (Photography, Videography, Editing, Graphic Design). Founder of IMAGIC CREATION. Let's bring your vision to life.",
   keywords: [
+    // Core Keywords
+    "Dinuka",
+    "Gunawardana",
     "Dinuka Gunawardana",
-    "Creative Visual Artist",
-    "Photographer",
-    "Portfolio",
-    "Sri Lanka",
-    "Graphic Designer",
-    "Videographer",
+    "Multidisciplinary visual artist",
+    "Creative services Sri Lanka",
+    "Freelance photographer Colombo",
+    "Videography services Sri Lanka",
+    "Graphic designer freelancer",
+    "Video editing services",
+    "IMAGIC CREATION",
+    // Supporting Keywords
+    "Storytelling through art",
+    "High-quality digital content",
+    "Innovative visual solutions",
+    "Commercial photography",
+    "Cinematic videography",
+    "Visual branding",
+    "Post-production services",
+    "Freelance editing",
   ],
+  // --- Open Graph (Social Sharing) ---
   openGraph: {
-    title: "Dinuka Gunawardana | Creative Visual Artist",
+    title: "Dinuka Gunawardana | Visual Artist & Creative Services",
     description:
-      "Explore Dinuka Gunawardana’s work in creative visual arts. Discover projects, case studies, and more.",
+      "Multidisciplinary visual artist & dedicated freelancer (Photography, Videography, Editing, Graphic Design). Founder of IMAGIC CREATION. Let's bring your vision to life.",
     url: "https://www.dinukagunawardana.web.lk",
     siteName: "Dinuka Gunawardana",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Dinuka Gunawardana Portfolio",
+        alt: "Dinuka Gunawardana Portfolio and Creative Services",
       },
     ],
     locale: "en_US",
     type: "website",
   },
   icons: {
-    icon: "/favicon.ICO", // Recommended for Google
+    icon: "/favicon.ico", // Recommended for Google
   },
 };
 

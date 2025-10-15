@@ -8,6 +8,7 @@ import BlogSection from '../components/blogSection.js';
 import Counter from '../components/Counter.js';
 import { Playfair_Display } from 'next/font/google'
 import { useRouter } from "next/navigation";
+import { Heading1 } from 'lucide-react';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -62,28 +63,28 @@ const handleAboutClick = (e) => {
       title: 'PHOTOGRAPHY',
       href: '/photography',
       img: '/services/photography.png',
-      desc: 'Photography captures moments, telling stories through images...',
+      desc: 'Photography captures moments,telling stories through images,preserving memories, and showcasing perspectives with creativity and technical skills',
       delay: 0.1,
     },
     {
       title: 'VIDEOGRAPHY',
       href: '/videography',
       img: '/services/video.png',
-      desc: 'Videography captures moving images, creating visual narratives...',
+      desc: 'Videogrphy captures moving images, creating visual narratives, documenting events,and conveying emotions through dynamic and creative storytelling',
       delay: 0.2,
     },
     {
       title: 'EDITING',
       href: '/editing',
       img: '/services/editing2.png',
-      desc: 'Editing refines and arranges content, enhancing storytelling...',
+      desc: 'Editing refines and arranging content, enhancing storytelling by cutting, adjusting, and polishing visuals or text for clarity and impact',
       delay: 0.3,
     },
     {
       title: 'GRAPHIC DESIGN',
       href: '/design',
       img: '/services/graphic.png',
-      desc: 'Graphic design combines visuals and text, crafting appealing communication...',
+      desc: 'Graphic design combines visuals and text, crafting appealing and effective communication through typography, imagery, and layout to convey messages',
       delay: 0.4,
     },
   ];
@@ -175,7 +176,7 @@ const handleAboutClick = (e) => {
       ) : (
         <>
           {/* Navbar */}
-          {/* Navigation */}
+         {/* Navigation */}
 <motion.nav
   ref={navRef}
   initial={{ y: -100, opacity: 0 }}
@@ -184,7 +185,8 @@ const handleAboutClick = (e) => {
     navVisible ? "opacity-100 translate-y-0" : "-translate-y-full opacity-0"
   }`}
   style={{
-    background: "linear-gradient(135deg, rgba(29,42,65,0.95) 0%, rgba(13,19,33,0.95) 100%)",
+    background:
+      "linear-gradient(135deg, rgba(29,42,65,0.95) 0%, rgba(13,19,33,0.95) 100%)",
     backdropFilter: "blur(20px)",
     width: "calc(100% - 3rem)",
     maxWidth: "1400px",
@@ -220,18 +222,25 @@ const handleAboutClick = (e) => {
 
     {/* Desktop Links */}
     <div className="hidden md:flex space-x-2 text-sm font-medium ml-auto mr-4">
-      {["HOME", "ABOUT", "WORK", "BLOG", "CONTACT"].map((item) => (
+      {[
+        { label: "HOME", href: "/#home" },
+        { label: "ABOUT", href: "/#about" },
+        { label: "WORK", href: "/portfolio" },
+        { label: "BLOG", href: "/#blog" },
+        { label: "CONTACT", href: "/#contact" },
+      ].map((item) => (
         <Link
-          key={item}
-          href={item === "WORK" ? "/portfolio" : item === "HOME" ? "/#home" : `/${item.toLowerCase()}`}
+          key={item.label}
+          href={item.href}
+          scroll={true}
           className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter]"
         >
-          {item}
+          {item.label}
         </Link>
       ))}
     </div>
 
-    {/* Mobile Menu with border lines */}
+    {/* Mobile Menu */}
     <AnimatePresence>
       {mobileMenuOpen && (
         <motion.div
@@ -240,17 +249,25 @@ const handleAboutClick = (e) => {
           exit={{ opacity: 0, height: 0 }}
           className="md:hidden w-full mt-4 space-y-2 overflow-hidden"
         >
-          {["HOME", "ABOUT", "WORK", "BLOG", "CONTACT"].map((item) => (
+          {[
+            { label: "HOME", href: "/#home" },
+            { label: "ABOUT", href: "/#about" },
+            { label: "WORK", href: "/portfolio" },
+            { label: "BLOG", href: "/#blog" },
+            { label: "CONTACT", href: "/#contact" },
+          ].map((item) => (
             <motion.div
-              key={item}
+              key={item.label}
               whileHover={{ x: 10 }}
               className="border-l-2 border-white/20 pl-4"
             >
               <Link
-                href={item === "WORK" ? "/portfolio" : item === "HOME" ? "/#home" : `/${item.toLowerCase()}`}
+                href={item.href}
+                scroll={true}
+                onClick={() => setMobileMenuOpen(false)} // close menu after click
                 className="block text-white/80 hover:text-white py-3 text-left transition-all font-[Inter]"
               >
-                {item}
+                {item.label}
               </Link>
             </motion.div>
           ))}
@@ -259,6 +276,7 @@ const handleAboutClick = (e) => {
     </AnimatePresence>
   </div>
 </motion.nav>
+
 
 
           <section id="home" className="relative w-full h-screen pt-20 overflow-hidden">
@@ -416,13 +434,13 @@ const handleAboutClick = (e) => {
               </div>
             </div>
           </section>
-
           {/* Skilled Software Logos Section */}
           <section className="py-12 bg-[#FFFBEE]">
-            <div className="max-w-6xl mx-auto px-2 md:px-8 text-center mb-8">
-              <h2 className="text-4xl font-bold font-[cormorant_garamond] text-[#0D1321]">
+            <div className="max-w-6xl mx-auto px-2 md:px-8 text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6 font-[playfair_display] text-[#0D1321]">
                 Tools That Shape My Craft
               </h2>
+              
             </div>
 
             <motion.div
@@ -446,7 +464,7 @@ const handleAboutClick = (e) => {
               ].map((logo, index) => (
                 <motion.div
                   key={index}
-                  className="flex justify-center items-center w-30 h-30"
+                  className="flex justify-center items-center w-30 h-30 bg-white rounded-lg shadow-sm p-4"
                   variants={itemVariants}
                 >
                   <Image
@@ -465,10 +483,10 @@ const handleAboutClick = (e) => {
 <section id="services" className="py-20 px-6 md:px-16 bg-gradient-to-br from-gray-50 to-gray-100 text-black">
   <div className="max-w-7xl mx-auto">
     <div className="text-center mb-16">
-      <h1 className="text-5xl md:text-6xl font-bold mb-6 font-[playfair_display] text-[#0D1321]">
+      <h2 className="text-5xl md:text-6xl font-bold mb-6 font-[playfair_display] text-[#0D1321]">
         Here&apos;s What I Create
-      </h1>
-      <div className="w-24 h-1 bg-gradient-to-r from-[#0D1321] to-gray-400 mx-auto"></div>
+      </h2>
+     
     </div>
     
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -295,7 +295,7 @@ export default function BlogPage() {
                       {post.title}
                     </h3>
                     <p
-                      className={`text-sm text-gray-500 mb-3 ${
+                      className={`text-xs text-gray-500 mb-3 ${
                         containsSinhala(post.date) ? notoSinhala.className : ""
                       }`}
                     >
