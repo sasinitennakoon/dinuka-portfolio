@@ -7,7 +7,7 @@ import FontLoader from './data/FontLoader.js'; // Import your FontLoader compone
 import Snow from "../components/Snow.js";
 
 import Script from "next/script";
-import FontLoader from "./data/FontLoader.js";
+
 
 
 // Fonts
