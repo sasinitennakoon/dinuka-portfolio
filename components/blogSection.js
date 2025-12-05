@@ -45,7 +45,7 @@ const blogs = [
   {
     id: 2,
     title: "අභිමානවත් නිදහසේ අනුස්මරණ​ය",
-    date: "MARCH 25, 2024",
+    date: "March 25, 2024",
     excerpt: "නිදහස සිහිගන්වමින් ඉදිකෙරුණු නිදහස් අනුස්මරණ ශාලාව එසේත් නැත්නම් නිදහස් චතුරස්‍රය...",
     image: "/blog/1700150925743.jpeg.jpg",
     link: "/blog/independent-square",
@@ -53,7 +53,7 @@ const blogs = [
   {
     id: 3,
     title: "Ceylon Cinnamon",
-    date: "NOVEMBER 15, 2023",
+    date: "November 15, 2023",
     excerpt: "The aroma is unmistakable sweet, warm, and subtly complex.It is the scent of history, of luxury, and of a...",
     image: "/blog/Ceylon Cinnamon.jpg",
     link: "/blog/ceylon-cinnamon",
@@ -61,7 +61,7 @@ const blogs = [
   {
     id: 4,
     title: "Thelme Costume",
-    date: "AUGUST 12, 2023",
+    date: "August 12, 2023",
     excerpt: "Thelme costume may refer to as the main costume of low country dance tradition. This costume arrangement is very...",
     image: "/blog/Thelme Costume.jpg",
     link: "/blog/thelme-costume",
@@ -69,7 +69,7 @@ const blogs = [
   {
     id: 5,
     title: "කෝච්චි පාරේ උසම තැන සොයා ගියෙ​මු",
-    date: "AUGUST 03, 2023",
+    date: "August 03, 2023",
     excerpt: "Summit Level” යනු ශ්‍රී ලංකාවේ මධ්‍යම කඳුකරය හරහා දිවෙන ප්‍රධාන දුම්රිය මාර්ගයේ උසම...",
     image: "/blog/pattipola.jpg",
     link: "/blog/pattipola-summit-point",
@@ -145,56 +145,92 @@ export default function BlogSection() {
 
             return (
               <Link
-                href={blog.link}
-                key={`${blog.id}-${index}`}
-                className={`blog-card flex-shrink-0 w-80 min-h-[430px] bg-[#FFFBEE] rounded-xl shadow-lg overflow-hidden 
-                  hover:shadow-2xl transition-all border border-black text-left 
-                  ${isMobile ? "snap-center" : ""}`}
-              >
-                <div className="relative w-full h-48 p-2">
-                  <div className="w-full h-full relative rounded-t-lg overflow-hidden border border-[#0D1321]">
-                    <Image src={blog.image} alt={blog.title} fill loading="lazy" className="object-cover" />
+                  href={blog.link}
+                  key={`${blog.id}-${index}`}
+                  className={`blog-card flex-shrink-0 w-80 min-h-[430px] rounded-xl shadow-md hover:shadow-2xl 
+                    backdrop-blur-md bg-white/70 border border-gray-300 overflow-hidden
+                    transition-all duration-300 flex flex-col ${isMobile ? "snap-center" : ""}`}
+                >
+                  {/* Image */}
+                  <div className="relative w-full h-48 overflow-hidden group">
+                    <Image
+                      src={blog.image}
+                      alt={blog.title}
+                      fill
+                      loading="lazy"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   </div>
-                </div>
-                <div className="p-4">
-                  <h3 className="text-3xl font-bold mb-2 text-center">
-                    {titleParts.map((part, i) => (
+
+                  {/* Content */}
+                  <div className="flex flex-col justify-between flex-grow p-4">
+                    <div>
+                      <h3 className="text-xl font-regular mb-1 text-[#0D1321] text-left leading-snug line-clamp-2">
+                        {titleParts.map((part, i) => (
+                          <span
+                            key={i}
+                            className={part.isSinhala ? notoSinhala.className : "font-[playfair_display]"}
+                          >
+                            {part.text}
+                          </span>
+                        ))}
+                      </h3>
+
+                      <p className="text-xs text-gray-500 mb-2 text-left">
+                        {dateParts ? (
+                          dateParts.map((part, i) => (
+                            <span key={i} className={part.isSinhala ? notoSinhala.className : ""}>
+                              {part.text}
+                            </span>
+                          ))
+                        ) : (
+                          blog.date
+                        )}
+                      </p>
+
+                      <p className="text-gray-700 text-sm text-left line-clamp-3">
+                        {excerptParts ? (
+                          excerptParts.map((part, i) => (
+                            <span
+                              key={i}
+                              className={part.isSinhala ? notoSinhala.className : "font-[DM_Sans]"}
+                            >
+                              {part.text}
+                            </span>
+                          ))
+                        ) : (
+                          <span className="font-[DM_Sans]">{blog.excerpt}</span>
+                        )}
+                      </p>
+                    </div>
+
+                    <div className="mt-4 text-left">
                       <span
-                        key={i}
-                        className={part.isSinhala ? notoSinhala.className : "font-[playfair_display]"}
+                        className="inline-flex items-center gap-2 text-[#0D1321] font-regular 
+                        hover:gap-3 transition-all duration-300"
                       >
-                        {part.text}
-                      </span>
-                    ))}
-                  </h3>
-                  <p className="text-xs text-gray-500 text-left">
-                    {dateParts ? (
-                      dateParts.map((part, i) => (
-                        <span key={i} className={part.isSinhala ? notoSinhala.className : ""}>
-                          {part.text}
-                        </span>
-                      ))
-                    ) : (
-                      blog.date
-                    )}
-                  </p>
-                  <br />
-                  <p className="text-sm text-gray-700">
-                    {excerptParts ? (
-                      excerptParts.map((part, i) => (
-                        <span
-                          key={i}
-                          className={part.isSinhala ? notoSinhala.className : "font-[DM_Sans]"}
+                        <span className="underline underline-offset-4">Read More</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={2}
+                          stroke="currentColor"
+                          className="w-5 h-5"
                         >
-                          {part.text}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="font-[DM_Sans]">{blog.excerpt}</span>
-                    )}
-                  </p>
-                </div>
-              </Link>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+
+
             );
           })}
         </div>

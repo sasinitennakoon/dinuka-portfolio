@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence} from "framer-motion";
 import { Noto_Sans_Sinhala } from "next/font/google";
 
 // Import the font directly in this component
@@ -103,116 +103,125 @@ export default function BlogPage() {
   return (
     <main className="bg-[#E7E7E7] min-h-screen flex flex-col text-black">
       {/* Navbar */}
-      <nav
-        ref={navRef}
-        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 shadow-md transition-[opacity,transform] duration-500 ease-in-out ${
-          navVisible ? "opacity-100 translate-y-0" : "-translate-y-full opacity-0"
-        }`}
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(29,42,65,0.9) 0%, rgba(13,19,33,0.9) 50%, rgba(29,42,65,0.9) 100%)",
-          backdropFilter: "blur(10px)",
-          width: "calc(100% - 3rem)",
-          maxWidth: "1400px",
-          borderRadius: mobileMenuOpen ? "1rem" : "9999px",
-        }}
+      {/* Navigation */}
+<motion.nav
+  ref={navRef}
+  initial={{ y: -100, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
+    navVisible ? "opacity-100 translate-y-0" : "-translate-y-full opacity-0"
+  }`}
+  style={{
+    background: "linear-gradient(135deg, rgba(29,42,65,0.95) 0%, rgba(13,19,33,0.95) 100%)",
+    backdropFilter: "blur(20px)",
+    width: "calc(100% - 3rem)",
+    maxWidth: "1400px",
+    borderRadius: mobileMenuOpen ? "1.5rem" : "2rem",
+    transition: "border-radius 0.4s ease",
+    border: "1px solid rgba(255,255,255,0.1)",
+  }}
+>
+  <div className="flex flex-col md:flex-row items-center px-6 py-3">
+    {/* Logo + Mobile Toggle */}
+    <div className="flex justify-between w-full items-center md:w-auto">
+      <Link href="/#home" className="flex-shrink-0">
+        <Image
+          src="/signature-dinuka.png"
+          alt="Signature"
+          width={180}
+          height={28}
+          className="object-contain cursor-pointer brightness-0 invert"
+        />
+      </Link>
+
+      <button
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        className="md:hidden text-white text-2xl p-2 rounded-full hover:bg-white/10 transition-colors"
       >
-        <div className="flex flex-col md:flex-row items-center px-8 py-4">
-          {/* Top row: Logo + Toggle */}
-          <div className="flex justify-between w-full items-center md:w-auto">
-            <Link href="/#home" className="flex-shrink-0">
-              <Image
-                src="/signature-dinuka.png"
-                alt="Signature"
-                width={200}
-                height={30}
-                className="object-contain cursor-pointer"
-              />
-            </Link>
+        {mobileMenuOpen ? "✕" : "☰"}
+      </button>
+    </div>
 
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-white text-2xl focus:outline-none p-2 rounded-full hover:bg-white/10"
-            >
-              {mobileMenuOpen ? "✕" : "☰"}
-            </button>
-          </div>
+    {/* Desktop Navigation */}
+    <div className="hidden md:flex space-x-2 text-sm font-medium ml-auto mr-4">
+      {["HOME", "ABOUT", "WORK", "BLOG", "CONTACT"].map((item) => (
+        item === "ABOUT" ? (
+          <button
+            key={item}
+            onClick={handleAboutClick}
+            className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter]"
+          >
+            {item}
+          </button>
+        ) : item === "CONTACT" ? (
+          <a
+            key={item}
+            href="https://wa.me/94716295618"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter]"
+          >
+            {item}
+          </a>
+        ) : (
+          <Link
+            key={item}
+            href={item === "WORK" ? "/portfolio" : item === "HOME" ? "/#home" : `/${item.toLowerCase()}`}
+            className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter]"
+          >
+            {item}
+          </Link>
+        )
+      ))}
+    </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8 text-base font-medium ml-auto">
-            <Link
-              href="/#home"
-              className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]"
+    {/* Mobile Menu */}
+    <AnimatePresence>
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden w-full mt-4 space-y-2 overflow-hidden"
+        >
+          {["HOME", "ABOUT", "WORK", "BLOG", "CONTACT"].map((item) => (
+            <motion.div
+              key={item}
+              whileHover={{ x: 10 }}
+              className="border-l-2 border-white/20 pl-4"
             >
-              HOME
-            </Link>
-            <button
-              onClick={handleAboutClick}
-              className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]"
-            >
-              ABOUT
-            </button>
-            <Link
-              href="/portfolio"
-              className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]"
-            >
-              WORK
-            </Link>
-            <Link
-              href="/blog"
-              className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]"
-            >
-              BLOG
-            </Link>
-            <a
-              href="https://wa.me/94716295618"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter]"
-            >
-              CONTACT
-            </a>
-          </div>
+              {item === "ABOUT" ? (
+                <button
+                  onClick={handleAboutClick}
+                  className="block w-full text-white/80 hover:text-white py-3 text-left transition-all font-[Inter]"
+                >
+                  {item}
+                </button>
+              ) : item === "CONTACT" ? (
+                <a
+                  href="https://wa.me/94716295618"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-white/80 hover:text-white py-3 text-left transition-all font-[Inter]"
+                >
+                  {item}
+                </a>
+              ) : (
+                <Link
+                  href={item === "WORK" ? "/portfolio" : item === "HOME" ? "/#home" : `/${item.toLowerCase()}`}
+                  className="block text-white/80 hover:text-white py-3 text-left transition-all font-[Inter]"
+                >
+                  {item}
+                </Link>
+              )}
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+</motion.nav>
 
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden w-full mt-4 space-y-2 transition-all duration-300">
-              <Link
-                href="/#home"
-                className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-              >
-                HOME
-              </Link>
-              <button
-                onClick={handleAboutClick}
-                className="block w-full text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-              >
-                ABOUT
-              </button>
-              <Link
-                href="/portfolio"
-                className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-              >
-                WORK
-              </Link>
-              <Link
-                href="/blog"
-                className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-              >
-                BLOG
-              </Link>
-              <a
-                href="https://wa.me/94716295618"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-[#E7E7E7] px-4 py-2 rounded-full hover:bg-white/10 font-[Inter] text-center"
-              >
-                CONTACT
-              </a>
-            </div>
-          )}
-        </div>
-      </nav>
 
       <div className="flex-grow pt-32 px-4 sm:px-10 md:px-20 pb-20">
         <motion.div
@@ -246,57 +255,91 @@ export default function BlogPage() {
               key={index}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.6, 
+              transition={{
+                duration: 0.6,
                 delay: index * 0.15,
               }}
               whileHover={{
-                y: -5,
-                transition: { duration: 0.2 }
+                y: -8,
+                transition: { duration: 0.3 },
               }}
               className="flex flex-col h-full"
             >
-              <Link
-                href={`/blog/${post.slug}`}
-                className="border border-[#0D1321] rounded-lg shadow hover:shadow-xl bg-[#FFFBEE] transition-all p-4 w-full h-full flex flex-col"
+              <div
+                className="rounded-2xl overflow-hidden shadow-md hover:shadow-2xl backdrop-blur-md bg-white/70 
+                border border-gray-200 transition-all duration-300 flex flex-col h-full"
               >
-                {/* Image container with fixed height */}
-                <div className="rounded w-full h-52 overflow-hidden mb-4 border border-[#0D1321] flex-shrink-0">
+                {/* Image container */}
+                <div className="relative w-full h-60 overflow-hidden group">
                   <Image
                     src={post.image}
                     alt={post.title}
                     width={400}
                     height={300}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 </div>
-                
-                {/* Text content container with flex-grow */}
-                <div className="flex-grow flex flex-col">
-                  {/* Apply Sinhala font only to Sinhala titles */}
-                  <h3 className={`text-xl md:text-2xl font-semibold text-center mb-1 ${
-                    containsSinhala(post.title) ? notoSinhala.className : "font-[playfair_display]"
-                  }`}>
-                    {post.title}
-                  </h3>
-                  
-                  {/* Apply Sinhala font only to Sinhala dates */}
-                  <p className={`text-sm text-gray-500 text-center ${
-                    containsSinhala(post.date) ? notoSinhala.className : ""
-                  }`}>
-                    {post.date}
-                  </p>
-                  
-                  {/* Apply Sinhala font only to Sinhala excerpts */}
-                  <p className={`text-[#0D1321] text-base line-clamp-3 mt-2 flex-grow ${
-                    containsSinhala(post.excerpt) ? notoSinhala.className : "font-[DM_Sans]"
-                  }`}>
-                    {post.excerpt}
-                  </p>
+
+                {/* Text content with fixed spacing */}
+                <div className="flex flex-col justify-between flex-grow px-5 py-4">
+                  <div>
+                    <h3
+                      className={`text-xl font-medium mb-1 text-[#0D1321] leading-snug line-clamp-2 ${
+                        containsSinhala(post.title)
+                          ? notoSinhala.className
+                          : "font-[playfair_display]"
+                      }`}
+                    >
+                      {post.title}
+                    </h3>
+                    <p
+                      className={`text-xs text-gray-500 mb-3 ${
+                        containsSinhala(post.date) ? notoSinhala.className : ""
+                      }`}
+                    >
+                      {post.date}
+                    </p>
+                    <p
+                      className={`text-gray-700 text-base line-clamp-3 ${
+                        containsSinhala(post.excerpt)
+                          ? notoSinhala.className
+                          : "font-[DM_Sans]"
+                      }`}
+                    >
+                      {post.excerpt}
+                    </p>
+                  </div>
+
+                  {/* Read More Button pinned at bottom */}
+                  <div className="mt-4">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="inline-flex items-center gap-2 text-[#0D1321] font-regular 
+                      group-hover:text-black hover:gap-3 transition-all duration-300"
+                    >
+                      <span className="underline underline-offset-4">Read More</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="w-5 h-5"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
-              </Link>
+              </div>
             </motion.div>
+
           ))}
         </div>
       </div>
