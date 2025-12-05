@@ -37,6 +37,12 @@ export const metadata = {
     "Multidisciplinary visual artist & dedicated freelancer (Photography, Videography, Editing, Graphic Design). Founder of IMAGIC CREATION. Let's bring your vision to life.",
   keywords: [
     // Core Keywords
+    "dinuka",
+    "dinuka gunawardana",
+    "Dinuka lst",
+    "Dinuka LST",
+    "dinuka lst",
+    "dinuka lst",
     "Dinuka",
     "Gunawardana",
     "Dinuka Gunawardana",
