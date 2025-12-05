@@ -3,6 +3,7 @@ import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Noto_Sans_Sinhala } from "next/font/google";
 import FontLoader from './data/FontLoader.js'; // Import your FontLoader component
+import Snow from "../components/Snow.js";
 
 // Noto Sans Sinhala - use optional display to avoid FOUT/FOIT
 const notoSinhala = Noto_Sans_Sinhala({
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="antialiased">
         <FontLoader />
+        <Snow />
         {children}
       </body>
     </html>

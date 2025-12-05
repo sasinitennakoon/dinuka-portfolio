@@ -215,3 +215,25 @@ nav {
 .sinhala-text {
   font-family: var(--font-noto-sinhala), 'Noto Sans Sinhala', system-ui, sans-serif;
 }
+
+/* Snowflakes Animation */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+.snowflake {
+  position: fixed;
+  top: -20px;
+  user-select: none;
+  pointer-events: none;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
