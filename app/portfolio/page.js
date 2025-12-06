@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import Navbar from '../../components/Navbar';
 
 export default function PortfolioPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -79,128 +80,8 @@ export default function PortfolioPage() {
 
   return (
     <>
-      {/* Navigation */}
-      <motion.nav
-        ref={navRef}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
-          navVisible ? "opacity-100 translate-y-0" : "-translate-y-full opacity-0"
-        }`}
-        style={{
-          background: "linear-gradient(135deg, rgba(29,42,65,0.95) 0%, rgba(13,19,33,0.95) 100%)",
-          backdropFilter: "blur(20px)",
-          width: "calc(100% - 3rem)",
-          maxWidth: "1400px",
-          borderRadius: mobileMenuOpen ? "1.5rem" : "2rem",
-          transition: "border-radius 0.4s ease",
-          border: "1px solid rgba(255,255,255,0.1)"
-        }}
-      >
-        <div className="flex flex-col md:flex-row items-center px-6 py-3">
-          <div className="flex justify-between w-full items-center md:w-auto">
-            <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0">
-              <Link href="/#home">
-                <Image
-                  src="/signature-dinuka.png"
-                  alt="Signature"
-                  width={180}
-                  height={28}
-                  className="object-contain cursor-pointer brightness-0 invert"
-                />
-              </Link>
-            </motion.div>
-
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-white text-xl p-2 rounded-full hover:bg-white/10 transition-colors"
-            >
-              {mobileMenuOpen ? "✕" : "☰"}
-            </motion.button>
-          </div>
-
-          <div className="hidden md:flex space-x-2 text-sm font-medium ml-auto mr-4">
-            {['HOME', 'ABOUT', 'WORK', 'BLOG', 'CONTACT'].map((item, index) => (
-              <motion.div
-                key={item}
-                whileHover={{ scale: 1.05 }}
-                className="relative"
-              >
-                {item === 'ABOUT' ? (
-                  <button
-                    onClick={handleAboutClick}
-                    className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter]"
-                  >
-                    {item}
-                  </button>
-                ) : item === 'CONTACT' ? (
-                  <a
-                    href="https://wa.me/94716295618"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter] block"
-                  >
-                    {item}
-                  </a>
-                ) : (
-                  <Link
-                    href={item === 'HOME' ? '/#home' : `/${item.toLowerCase()}`}
-                    className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter] block"
-                  >
-                    {item}
-                  </Link>
-                )}
-              </motion.div>
-            ))}
-          </div>
-
-          <AnimatePresence>
-            {mobileMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="md:hidden w-full mt-4 space-y-2 overflow-hidden"
-              >
-                {['HOME', 'ABOUT', 'WORK', 'BLOG', 'CONTACT'].map((item) => (
-                  <motion.div
-                    key={item}
-                    whileHover={{ x: 10 }}
-                    className="border-l-2 border-white/20 pl-4"
-                  >
-                    {item === 'ABOUT' ? (
-                      <button
-                        onClick={handleAboutClick}
-                        className="block w-full text-white/80 hover:text-white py-3 text-left transition-colors font-[Inter]"
-                      >
-                        {item}
-                      </button>
-                    ) : item === 'CONTACT' ? (
-                      <a
-                        href="https://wa.me/94716295618"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block text-white/80 hover:text-white py-3 transition-colors font-[Inter]"
-                      >
-                        {item}
-                      </a>
-                    ) : (
-                      <Link
-                        href={item === 'HOME' ? '/#home' : `/${item.toLowerCase()}`}
-                        className="block text-white/80 hover:text-white py-3 transition-colors font-[Inter]"
-                      >
-                        {item}
-                      </Link>
-                    )}
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </motion.nav>
+    <Navbar />
+      
 
       {/* Main Content */}
       <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-gray-100 px-6 pt-32 md:px-12 lg:px-20 pb-20">

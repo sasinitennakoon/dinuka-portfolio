@@ -9,6 +9,7 @@ import Counter from '../components/Counter.js';
 import { Playfair_Display } from 'next/font/google'
 import { useRouter } from "next/navigation";
 import { Heading1 } from 'lucide-react';
+import Navbar from '../components/Navbar.js';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -28,6 +29,7 @@ export default function Home() {
   const imageControls = useAnimation();
   const textControls = useAnimation();
 
+
   const router = useRouter();
 
 const handleAboutClick = (e) => {
@@ -43,6 +45,7 @@ const handleAboutClick = (e) => {
     }
   }, 500);
 };
+
 
   
   
@@ -175,108 +178,7 @@ const handleAboutClick = (e) => {
         </div>
       ) : (
         <>
-          {/* Navbar */}
-         {/* Navigation */}
-<motion.nav
-  ref={navRef}
-  initial={{ y: -100, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
-    navVisible ? "opacity-100 translate-y-0" : "-translate-y-full opacity-0"
-  }`}
-  style={{
-    background:
-      "linear-gradient(135deg, rgba(29,42,65,0.95) 0%, rgba(13,19,33,0.95) 100%)",
-    backdropFilter: "blur(20px)",
-    width: "calc(100% - 3rem)",
-    maxWidth: "1400px",
-    borderRadius: mobileMenuOpen ? "1.5rem" : "2rem",
-    transition: "border-radius 0.4s ease",
-    border: "1px solid rgba(255,255,255,0.1)",
-  }}
->
-  <div className="flex flex-col md:flex-row items-center px-6 py-3">
-    {/* Logo + Mobile Button */}
-    <div className="flex justify-between w-full items-center md:w-auto">
-      <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0">
-        <Link href="/#home">
-          <Image
-            src="/signature-dinuka.png"
-            alt="Signature"
-            width={180}
-            height={28}
-            className="object-contain cursor-pointer brightness-0 invert"
-          />
-        </Link>
-      </motion.div>
-
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="md:hidden text-white text-xl p-2 rounded-full hover:bg-white/10 transition-colors"
-      >
-        {mobileMenuOpen ? "✕" : "☰"}
-      </motion.button>
-    </div>
-
-    {/* Desktop Links */}
-    <div className="hidden md:flex space-x-2 text-sm font-medium ml-auto mr-4">
-      {[
-        { label: "HOME", href: "/#home" },
-        { label: "ABOUT", href: "/#about" },
-        { label: "WORK", href: "/portfolio" },
-        { label: "BLOG", href: "/#blog" },
-        { label: "CONTACT", href: "/#contact" },
-      ].map((item) => (
-        <Link
-          key={item.label}
-          href={item.href}
-          scroll={true}
-          className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter]"
-        >
-          {item.label}
-        </Link>
-      ))}
-    </div>
-
-    {/* Mobile Menu */}
-    <AnimatePresence>
-      {mobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          className="md:hidden w-full mt-4 space-y-2 overflow-hidden"
-        >
-          {[
-            { label: "HOME", href: "/#home" },
-            { label: "ABOUT", href: "/#about" },
-            { label: "WORK", href: "/portfolio" },
-            { label: "BLOG", href: "/#blog" },
-            { label: "CONTACT", href: "/#contact" },
-          ].map((item) => (
-            <motion.div
-              key={item.label}
-              whileHover={{ x: 10 }}
-              className="border-l-2 border-white/20 pl-4"
-            >
-              <Link
-                href={item.href}
-                scroll={true}
-                onClick={() => setMobileMenuOpen(false)} // close menu after click
-                className="block text-white/80 hover:text-white py-3 text-left transition-all font-[Inter]"
-              >
-                {item.label}
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </div>
-</motion.nav>
-
+          <Navbar />
 
 
           <section id="home" className="relative w-full h-screen pt-20 overflow-hidden">
@@ -317,16 +219,33 @@ const handleAboutClick = (e) => {
                     CREATIVE WORLD!
                   </h2>
                   
-                  {/* Download Button */}
-                  <motion.a
-                    href="/Dinuka Gunawardana CV.pdf"
-                    download
-                    className="inline-block bg-white text-[#0D1321] font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-200 transition-colors duration-300"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Download CV
-                  </motion.a>
+                  
+                  {/* Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                      {/* Download CV Button */}
+                      <motion.a
+                        href="/Dinuka Gunawardana CV.pdf"
+                        download
+                        className="w-full sm:w-auto text-center bg-white text-[#0D1321] font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-200 transition-colors duration-300"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Download CV
+                      </motion.a>
+
+                      {/* Visit My Creative Eye Button */}
+                      <motion.a
+                        href="https://www.pexels.com/@dinukagunawardana/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto text-center border-2 border-white text-white font-semibold px-6 py-3 rounded-md hover:bg-white hover:text-[#0D1321] transition-all duration-300"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Visit My Creative Eye
+                      </motion.a>
+                    </div>
+
                 </motion.div>
               </div>
             </div>

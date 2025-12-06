@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence} from "framer-motion";
 import { Noto_Sans_Sinhala } from "next/font/google";
+import Navbar from '../../components/Navbar';
 
 // Import the font directly in this component
 const notoSinhala = Noto_Sans_Sinhala({
@@ -102,126 +103,7 @@ export default function BlogPage() {
 
   return (
     <main className="bg-[#E7E7E7] min-h-screen flex flex-col text-black">
-      {/* Navbar */}
-      {/* Navigation */}
-<motion.nav
-  ref={navRef}
-  initial={{ y: -100, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
-    navVisible ? "opacity-100 translate-y-0" : "-translate-y-full opacity-0"
-  }`}
-  style={{
-    background: "linear-gradient(135deg, rgba(29,42,65,0.95) 0%, rgba(13,19,33,0.95) 100%)",
-    backdropFilter: "blur(20px)",
-    width: "calc(100% - 3rem)",
-    maxWidth: "1400px",
-    borderRadius: mobileMenuOpen ? "1.5rem" : "2rem",
-    transition: "border-radius 0.4s ease",
-    border: "1px solid rgba(255,255,255,0.1)",
-  }}
->
-  <div className="flex flex-col md:flex-row items-center px-6 py-3">
-    {/* Logo + Mobile Toggle */}
-    <div className="flex justify-between w-full items-center md:w-auto">
-      <Link href="/#home" className="flex-shrink-0">
-        <Image
-          src="/signature-dinuka.png"
-          alt="Signature"
-          width={180}
-          height={28}
-          className="object-contain cursor-pointer brightness-0 invert"
-        />
-      </Link>
-
-      <button
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="md:hidden text-white text-2xl p-2 rounded-full hover:bg-white/10 transition-colors"
-      >
-        {mobileMenuOpen ? "✕" : "☰"}
-      </button>
-    </div>
-
-    {/* Desktop Navigation */}
-    <div className="hidden md:flex space-x-2 text-sm font-medium ml-auto mr-4">
-      {["HOME", "ABOUT", "WORK", "BLOG", "CONTACT"].map((item) => (
-        item === "ABOUT" ? (
-          <button
-            key={item}
-            onClick={handleAboutClick}
-            className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter]"
-          >
-            {item}
-          </button>
-        ) : item === "CONTACT" ? (
-          <a
-            key={item}
-            href="https://wa.me/94716295618"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter]"
-          >
-            {item}
-          </a>
-        ) : (
-          <Link
-            key={item}
-            href={item === "WORK" ? "/portfolio" : item === "HOME" ? "/#home" : `/${item.toLowerCase()}`}
-            className="text-white/80 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all duration-300 font-[Inter]"
-          >
-            {item}
-          </Link>
-        )
-      ))}
-    </div>
-
-    {/* Mobile Menu */}
-    <AnimatePresence>
-      {mobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          className="md:hidden w-full mt-4 space-y-2 overflow-hidden"
-        >
-          {["HOME", "ABOUT", "WORK", "BLOG", "CONTACT"].map((item) => (
-            <motion.div
-              key={item}
-              whileHover={{ x: 10 }}
-              className="border-l-2 border-white/20 pl-4"
-            >
-              {item === "ABOUT" ? (
-                <button
-                  onClick={handleAboutClick}
-                  className="block w-full text-white/80 hover:text-white py-3 text-left transition-all font-[Inter]"
-                >
-                  {item}
-                </button>
-              ) : item === "CONTACT" ? (
-                <a
-                  href="https://wa.me/94716295618"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-white/80 hover:text-white py-3 text-left transition-all font-[Inter]"
-                >
-                  {item}
-                </a>
-              ) : (
-                <Link
-                  href={item === "WORK" ? "/portfolio" : item === "HOME" ? "/#home" : `/${item.toLowerCase()}`}
-                  className="block text-white/80 hover:text-white py-3 text-left transition-all font-[Inter]"
-                >
-                  {item}
-                </Link>
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </div>
-</motion.nav>
-
+      <Navbar />
 
       <div className="flex-grow pt-32 px-4 sm:px-10 md:px-20 pb-20">
         <motion.div
