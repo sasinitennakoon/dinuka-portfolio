@@ -1,7 +1,7 @@
 // src/data/videos.js
 export const videos = [
   {
-    title: '🎬 MANNAR – The Drowning Island',
+    title: 'MANNAR – The Drowning Island',
     tag: ['DOP','Editor' ],
     description:
       'Presented by PARL (The People’s Alliance for Right to Land), this video highlights the documentary film that delves deep into the intersection of renewable energy, environmental change, and human resilience in Sri Lanka’s Mannar District. Produced by  The People’s Alliance for Right to Land, directed by Amila Udagedara, cinematographed and edited by Dinuka Gunawardana.',
