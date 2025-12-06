@@ -92,9 +92,13 @@ export default function RootLayout({ children }) {
       lang="si"
       className={`${notoSinhala.variable} ${geistSans.variable} ${geistMono.variable} font-loading`}
     >
+      <head>
+      <meta name="google-adsense-account" content="ca-pub-4143609489488085"></meta>
       {/*Google Adsense*/}
         <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4143609489488085"
      crossOrigin="anonymous"></Script>
+
+     </head>
       <body className="antialiased">
         
         {/* Google Analytics */}
