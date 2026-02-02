@@ -160,6 +160,7 @@ export default function VideographyPage() {
                 <div className="flex flex-col md:flex-row gap-8 md:items-center">
                   {/* Left: Image */}
                   <div className="flex-shrink-0 w-full md:w-[300px]">
+                  <a href={video.youtubeUrl} target="_blank" rel="noopener noreferrer" className="block w-full">
                     <Image
                       src={video.videoSrc}
                       alt={video.title}
@@ -167,6 +168,7 @@ export default function VideographyPage() {
                       height={200}
                       className="rounded-lg object-cover w-full h-auto border border-black"
                     />
+                  </a>
                   </div>
 
                   {/* Right: Description */}
