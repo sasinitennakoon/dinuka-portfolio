@@ -224,7 +224,7 @@ const handleAboutClick = (e) => {
                     <div className="flex flex-col sm:flex-row gap-4 mt-6">
                       {/* Download CV Button */}
                       <motion.a
-                        href="/Dinuka Gunawardana CV.pdf"
+                        href="/Dinuka CV .pdf"
                         download
                         className="w-full sm:w-auto text-center bg-white text-[#0D1321] font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-200 transition-colors duration-300"
                         whileHover={{ scale: 1.05 }}
