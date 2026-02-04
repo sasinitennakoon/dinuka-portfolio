@@ -14,7 +14,7 @@ const notoSinhala = Noto_Sans_Sinhala({
   display: "swap",
 });
 
-const blogPosts = [
+const blogPosts = [/*
   {
     title: "දහසක් සිත් සනහන අවුකන බුදු පිළිම වහන්සේ",
     slug: "Awukana-buddha-statue",
@@ -29,7 +29,7 @@ const blogPosts = [
     date: "MARCH 25, 2024",
     image: "/blog/1700150925743.jpeg.jpg",
     excerpt: "නිදහස සිහිගන්වමින් ඉදිකෙරුණු නිදහස් අනුස්මරණ ශාලාව එසේත් නැත්නම් නිදහස් චතුරස්‍රය අද දිනයේ කාගේත් අවධානයට පාත්‍ර වූ ගොඩනැගිල්ලකි...",
-  },
+  },*/
   {
     title: "Ceylon Cinnamon",
     slug: "ceylon-cinnamon",
@@ -43,14 +43,14 @@ const blogPosts = [
     date: "AUGUST 12, 2023",
     image: "/blog/Thelme Costume.jpg",
     excerpt: "Thelme costume may refer to as the main costume of low country dance tradition. This costume arrangement is very...",
-  },
+  },/*
   {
     title: "කෝච්චි පාරේ උසම තැන සොයා ගියෙ​මු",
     slug: "pattipola-summit-point",
     date: "AUGUST 03, 2023",
     image: "/blog/pattipola.jpg",
     excerpt: "“Summit Level” යනු ශ්‍රී ලංකාවේ මධ්‍යම කඳුකරය හරහා දිවෙන ප්‍රධාන දුම්රිය මාර්ගයේ උසම ස්ථානයයි...",
-  },
+  },*/
 ];
 
 // Function to detect if text contains Sinhala characters

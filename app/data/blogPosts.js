@@ -1,6 +1,7 @@
 // data/blogPosts.js
 
 export const blogPosts = [
+  /*
   {
     id: 1,
     slug: "Awukana-buddha-statue",
@@ -49,7 +50,8 @@ export const blogPosts = [
 
 එසේම මෙවැනි නිර්මාණ වලින් යුතු සංස්කෘතියක් ඇති රටක උපත ලබන්නට හැකිවීම ලාංකිකයන් වන අප සැමට ඉමහත් අභිමානයක් බව මගේ අදහසයි.`
 
-  },
+  },*/
+  /*
   {
     id: 2,
     slug: "independent-square",
@@ -72,7 +74,7 @@ export const blogPosts = [
 නිදහස් මන්දිරයේ ඇති කැටයම් කළු ගලෙන් නිමවා ඇති අතර විජයාවතරණයේ සිට ඇරඹි සිංහලයාගේ ඉතිහාසය විදහා දක්වන විවිධ සිද්ධීන් පිළිබඳ චිත්‍ර මෙහි ඇතුළත බිත්ති නිරූපණය කරයි. ජාතික අභිමානයේ නිදහස ලබා ගැනීම සඳහා දිවි හිමියෙන් කැපවූ වීරයන්ගේ ජීවමාන රූප එහි ප්‍රදර්ශනය කර ඇත. රට, ජාතිය වෙනුවෙන් හඬ නැඟූ ඒ අභීත රාජ්‍ය නායකයාණන් වන ඩී. එස්. සේනානායක මහතාගේ පිළිරුවද නිදහස් මන්දිරය ආසන්නයේම ඉදිකර ඇත්තේ, ලබා දුන් නිදහසට ගෞරව පුද කිරීමක් වශයෙනි.
 
 නිදහස් අනුස්මරණ කෞතුකාගාරයද නිදහස් චතුරස්‍රයේ බිම් මහලේ පිහිටා ඇත.මෙය විවිධ රාජ්‍ය නායකයන්ගේද පැසසුමට ලක්වී ඇත. ජාතික ස්මාරකයක් වන නිදහස් මන්දිරය නැරඹීම සඳහා දෙස් විදෙස් සංචාරකයන් විශාල ප්‍රමාණයක් මෙම ස්ථානයට දිනෙන් දින පැමිණෙ​යි.`,
-  },
+  },*/
   {
     id: 3,
     slug: "ceylon-cinnamon",
@@ -119,6 +121,7 @@ These shanthikarma are conducted to protect the health of low country people as 
 
 “ pahatharata beraya” is used in this low country dancing as the drum. Because of it’s long shape, it is called as “Dik beraya”. Also this is called as “goshaka beraya”, because of its loud sound. As well as this is called as “Yak beraya”, because it is used for Yak thovil. This drum is unique to Ruhunu area, so some people called this drum as “Ruhunu beraya”. Likethis, this drum is in use under several terms. It is special that the drum is made using skins that are taken from animals..`,
   },
+  /*
   {
     id: 5,
     slug: "pattipola-summit-point",
@@ -136,6 +139,6 @@ These shanthikarma are conducted to protect the health of low country people as 
 මෙම ස්ථානය නැරඹීමට යෑමේදී පට්ටිපොළ දුම්රිය ස්ථානයෙන් බැස එතැන් සිට පයින් ගමන් කල යුතුය.එම මාර්ගය දෙපසද ඉතා මනරම් පරිසර පද්ධතියක් දැකගත හැකිය.ප්‍රදේශයේ සිසිල් දේශගුණය සහ සුන්දර දර්ශන සංචාරකයින් සඳහා දුම්රිය ගමනේ ප්‍රියජනක සහ අමතක නොවන කොටසක් බවට පත්කරන බව නොඅනුමානය. ලංකාවේ උසම දුම්රිය ස්ථානය ද මෙය වේ. මෙය මුහුදු මට්ටමේ සිට 1897m ක් ඉහළින් පිහිටා ඇත. ලොව දුෂ්කරතම දුම්රිය මාර්ග අතරින් 07 වන ස්ථානය හිමි උඩරට දුම්රිය මාර්ගයෙහි පිහිටි පට්ටිපොල දුම්රිය ස්ථානය අඹේවෙල සහ ඔහිය යන දුම්රිය ස්ථාන දෙකට මැදිව පිහිටා තිබේ.
 
 Summit මට්ටමේදී, දුම්රිය මාර්ගය මුහුදු මට්ටමේ සිට අඩි 6,226 (මීටර් 1,898) ක උන්නතාංශයකට ළඟා වේ`,
-  },
+  },*/
   // ...other blog posts
 ];
