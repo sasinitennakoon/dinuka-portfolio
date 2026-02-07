@@ -6,7 +6,7 @@ export const videos = [
     description:
       'Life in the Times of Corona is a powerful short film inspired by real testimonies from the Pandemic Justice Project, shedding light on the health injustices faced by marginalized communities during the COVID-19 pandemic through the story of Sellamma, a resilient woman from Sri Lanka’s Northern Province. Told through narrative performance, choreography, and lived truth, the film stands as a tribute to courage, dignity, and unheard voices, and was presented in a special public screening to a live audience in a film hall. Produced by Law & Society Trust, directed by Nisanka Weheraduwa, and edited by Dinuka Gunawardana.',
     videoSrc: '/video/corona.jpg',
-    youtubeUrl: 'https://youtu.be/4YlqCSZ52wk?si=yAf-k1xcxvk1IcLz',
+    //youtubeUrl: 'https://youtu.be/4YlqCSZ52wk?si=yAf-k1xcxvk1IcLz',
      previewImages: [
     '/video/corona/corona 2.jpg',
     '/video/corona/corona 3.jpg',
