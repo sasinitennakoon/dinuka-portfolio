@@ -1,9 +1,10 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 export default function Counter({ target, suffix = '', duration = 1000 }) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
+    const hasAnimated = useRef(false);           
   const { ref, inView } = useInView({ threshold: 0.5 }); // triggers when 50% visible
 
   useEffect(() => {
