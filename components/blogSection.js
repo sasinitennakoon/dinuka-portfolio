@@ -34,8 +34,8 @@ const splitSinhalaAndEnglish = (text) => {
 
 // Blogs
 const blogs = [
-  {
-    id: 1,
+  /*{
+    id: 2,
     title: "දහසක් සිත් සනහන අවුකන බුදු පිළිම වහන්සේ",
     date: "මැයි 25, 2024",
     excerpt: "අනුරාධපුර යුගයේ නිර්මාණය වූ හිටි පිළිම සලකා බලන කල්හි ඉතාම වැදගත් නිර්මාණයක් ලෙස අවුකන බුද්ධ ප්‍රතිමාව...",
@@ -43,15 +43,23 @@ const blogs = [
     link: "/blog/Awukana-buddha-statue",
   },
   {
-    id: 2,
+    id: 3,
     title: "අභිමානවත් නිදහසේ අනුස්මරණ​ය",
     date: "March 25, 2024",
     excerpt: "නිදහස සිහිගන්වමින් ඉදිකෙරුණු නිදහස් අනුස්මරණ ශාලාව එසේත් නැත්නම් නිදහස් චතුරස්‍රය...",
     image: "/blog/1700150925743.jpeg.jpg",
     link: "/blog/independent-square",
+  },*/
+  {
+    id: 1,
+    title: "Pearl of the Indian Ocean",
+    date: "April 10, 2026",
+    image: "/blog/gall2.jpg",
+    excerpt: "Sri Lanka, known as the 'Pearl of the Indian Ocean,'' is a beautiful island with a great history, stunning beaches, rainforests, and magnificent mountain ranges. Although the country is small in land area, when it comes to its beauty and history, it is by no means a small country. Sri Lanka has long been a home for humanity. ...",
+    link: "/blog/pearl-of-the-indian-ocean",
   },
   {
-    id: 3,
+    id: 4,
     title: "Ceylon Cinnamon",
     date: "November 15, 2023",
     excerpt: "The aroma is unmistakable sweet, warm, and subtly complex.It is the scent of history, of luxury, and of a...",
@@ -59,21 +67,21 @@ const blogs = [
     link: "/blog/ceylon-cinnamon",
   },
   {
-    id: 4,
+    id: 5,
     title: "Thelme Costume",
     date: "August 12, 2023",
     excerpt: "Thelme costume may refer to as the main costume of low country dance tradition. This costume arrangement is very...",
     image: "/blog/Thelme Costume.jpg",
     link: "/blog/thelme-costume",
   },
-  {
-    id: 5,
+  /*{
+    id: 6,
     title: "කෝච්චි පාරේ උසම තැන සොයා ගියෙ​මු",
     date: "August 03, 2023",
     excerpt: "Summit Level” යනු ශ්‍රී ලංකාවේ මධ්‍යම කඳුකරය හරහා දිවෙන ප්‍රධාන දුම්රිය මාර්ගයේ උසම...",
     image: "/blog/pattipola.jpg",
     link: "/blog/pattipola-summit-point",
-  },
+  },*/
 ];
 
 export default function BlogSection() {

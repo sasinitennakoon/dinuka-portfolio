@@ -15,6 +15,7 @@ const notoSinhala = Noto_Sans_Sinhala({
 });
 
 const blogPosts = [/*
+  
   {
     title: "දහසක් සිත් සනහන අවුකන බුදු පිළිම වහන්සේ",
     slug: "Awukana-buddha-statue",
@@ -30,6 +31,13 @@ const blogPosts = [/*
     image: "/blog/1700150925743.jpeg.jpg",
     excerpt: "නිදහස සිහිගන්වමින් ඉදිකෙරුණු නිදහස් අනුස්මරණ ශාලාව එසේත් නැත්නම් නිදහස් චතුරස්‍රය අද දිනයේ කාගේත් අවධානයට පාත්‍ර වූ ගොඩනැගිල්ලකි...",
   },*/
+  {
+    title: "Pearl of the Indian Ocean",
+    slug: "pearl-of-the-indian-ocean",
+    date: "April 10, 2026",
+    image: "/blog/gall2.jpg",
+    excerpt: "Sri Lanka, known as the 'Pearl of the Indian Ocean,'' is a beautiful island with a great history, stunning beaches, rainforests, and magnificent mountain ranges. Although the country is small in land area, when it comes to its beauty and history, it is by no means a small country. Sri Lanka has long been a home for humanity. ...",
+  },
   {
     title: "Ceylon Cinnamon",
     slug: "ceylon-cinnamon",

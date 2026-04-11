@@ -1,59 +1,34 @@
 // data/blogPosts.js
 
 export const blogPosts = [
-  /*
   {
     id: 1,
-    slug: "Awukana-buddha-statue",
-    title: "දහසක් සිත් සනහන අවුකන බුදු පිළිම වහන්සේ",
-    content:"Buddhism, Religious,Sri Lanka",
-    date: "මැයි 25, 2024",
-    image: "/blog/1.jpg",
-    excerpt: "අනුරාධපුර යුගයේ නිර්මාණය වූ හිටි පිළිම සලකා බලන කල්හි ඉතාම වැදගත් නිර්මාණයක් ලෙස අවුකන බුද්ධ ප්‍රතිමාව...",
-    tags: ["Buddhism", "Religious", "Sri Lanka",  "Anuradhapura", "Historical"],
-    author: "දිනුක ගුණවර්ධන",
+    slug: "pearl-of-the-indian-ocean",
+    title: "Pearl of the Indian Ocean",
+    content:"Sri lanka, ceylon",
+    date: "April 10, 2026",
+    image: "/blog/gall2.jpg",
+    excerpt: "Sri Lanka, known as the...",
+    tags: ["Sri lanka", "Religious", "Historical"],
+    author: "Lakmi Tennakoon",
     photographer: "© Dinuka Gunawardana",
-    content: `බුදුරජානන් වහන්සේ වෙනුවෙන්  නිර්මාණය කොට ගැනෙන ප්‍රථිමාව  උද්දේශික වස්තුවකි. බුදුරජානන් වහන්සේ අප්පටි පුද්ගල වශයෙන් හඳුන්වා ඇත. එයින් අදහස් කෙරෙන්නේ උන්වහන්සේට සමකළ හැකි කිසිවෙක් නොවන බවයි. බුද්ධ ප්‍රථිමාවක්  නිර්මාණය කරගත යුතුව ඇත්තේ බුදු රජාණන් වහන්සේගේ ගුණ මෙනෙහි කොට පහන් සංවේගයක් ඇති කර ගත හැකිවන ආකාරයෙන්  මිස, වැඳුම් පිදුම් කොට යාඥා කිරීමට යොදා ගන්නා දෙවි කෙනෙකු ආකාරයෙන් නොවේ. එහෙයින් එම ප්‍රතිමාවෙන් උත්තරීතර තත්වයකට පත්වූ මනුෂ්‍යයකුගේ මහා කරුණාව, ශීලය, සමාධිය, ප්‍රඥාව ආදී   අභ්‍යන්තර ගුණ සමුදාය හා මහා පුරුෂ ලක්ෂණ ප්‍රති නිර්මාණය විය යුතුය. එහෙයින් බුද්ධ ප්‍රතිමාවක් නිර්මාණය කිරීම පහසු කටයුත්තක් නොවේ.
+    content: `Sri Lanka, known as the "Pearl of the Indian Ocean," is a beautiful island with a great history, stunning beaches, rainforests, and magnificent mountain ranges. Although the country is small in land area, when it comes to its beauty and history, it is by no means a small country. Sri Lanka has long been a home for humanity. The main ethnic group is the Sinhalese, alongside various other communities such as Tamils, Muslims, and Christians, among many others. The primary religion is Buddhism, while other faiths including Hinduism and Islam are also exisit. In this context, Sri Lanka is especially notable for three key aspects: its multiculturalism, its rich history, and its resilience.
+
+Sri Lankan culture is wonderful. Even though it is one of the smallest islands in the world, its culture is not small. It is not constant or uniform; instead, it is full of diversity. Since ancient times, Sri Lanka has been home to the Sinhalese. However, due to international trade, diplomatic relations with other countries, and enemy invasions, the island gradually became home to other ethnic groups such as Tamils, Muslims, and Christians. As a result of this blending, Sri Lanka effortlessly became a multicultural country. Sri Lanka has no lack of multicultural features and festivals throughout the year. During these festivals, all Sri Lankans celebrate together without any racial discrimination, with complete unity. All Sri Lankans have a special ability to embrace different cultural traditions as if they were their own, without considering race or religion. This helps Sri Lanka become a comfortable home for anyone belonging to any race or religion.
+
+Sri Lankan history is also not as small as its land. Sri Lanka has a great history spanning hundreds of thousands of years, a history that can be remembered with pride. From the Anuradhapura Kingdom, which was the first kingdom in Sri Lanka, to the present day, the journey of the Sri Lankan people has not been an easy one. Yet, the story of Sri Lankan history is colorful. It is full of ancient ancestors who faced obstacles without fear, never stepped back, and acted with bravery. Literary sources and archaeological sources stand as evidence of Sri Lanka's proud history. Moreover, Sri Lankan arts and crafts are popular around the world. There are world heritages as well. Simply put, Sri Lankans were experts at building pagodas that reached close to the sky, and lakes and ponds as vast as oceans. Because of this, Sri Lankan history remains great even today.
+
+Finally, facing obstacles without fear or retreat, from ancient times to the present, is a gift passed down by Sri Lanka's ancient ancestors. That resilience is amazing. In fact, Sri Lanka has faced so many obstacles throughout its history that far more than one might expect given its size as a small island.. Enemy invasions, local conspiracies dating back to ancient kingdoms, and the economic recessions of recent times have all deeply affected the country. But yesterday, today, and tomorrow, Sri Lankans face these challenges without fear and with bravery. They confront obstacles with pride and with determined efforts to maintain their quality of life. This resilience is a gift from their history.
+
+So overall, Sri Lanka is not an island to be underestimated because of its size. It is an island of diverse culture, great history, and endless beauty.
 
 
-නමුත් ශ්‍රී ලාංකික මුතුන් මිත්තන් ඒ අසීරු කාර්යය ජය ගැනීමට සමත්ව ඇති බව ඉතිහාසය මොනවට පෙන්වා දෙයි.එහිදී ශ්‍රී ලාංකික බුද්ධ ප්‍රතිමා කලාවේ ඇරඹුම පිළිබඳ නිශ්චිත සඳහනක් නොවූවද වංශ කතාවලට අනුව ක්‍රි.පූ.තෙවන සියවසේදී දෙවන පෑතිස්  ථූපාරාමයේ බුදු පිළිමයක් තැන්පත් කළ බව සඳහන් වේ.කෙසේ වෙතත් මෙහිදී අප අවධානය යොමු කරනු ලබන්නේ ලාංකීය බුද්ධ ප්‍රතිමා කලාවේ ප්‍රධානතම සංධිස්​ථානයක් පිළිබඳව ය.  
-                           
-“මේ තරම් සියුමැලිද කළු ගල්
-හිතන්නටවත් බැරි නිසා
-මම ගියා අවුකන බුදුන්ටත් 
-දෑස් දුන් මිනිසා සොයා”
+`
 
-                            
-ශ්‍රී ලංකාවේ බුද්ධ ප්‍රතිමා නෙළීම ආරම්භ වූයේ කවරදාකද යන්න ඉතිහාසය තවමත් ගෙනහැර දක්වන්නේ නැහැ. නමුත් වංශ කතාවලට අනුව නම් ක්‍රි.පූ තුන්වන සියවසේදී දෙවන පෑතිස් රජතුමා ථූපාරාමයේ ක් සදහන් වෙනවා. කොහොමවුනත් ඒ පිළිබදව තවමත් වැඩිදුර සාක්ෂි සොයාගන්නට ඉතිහාසඥයන් අසමත් වෙලා තිබෙනවා.
-
-මහාවංශය සදහන් කරන ආකාරයට දුටුගැමුණු රජතුමා විසින් රුවන්වැලිසෑයේ ධාතු ගර්භයේ බුදු පිළිමයක් තැන්පත් කළ බව සදහන් වෙනවා. ඒ වගේම වසභ රජතුමන් විසින්ද ශ්‍රී මහා බෝධියේ සතර පැතිවල බුදුපිළිම හතරක් කරවූ බවත් වෝහාරික තිස්ස, ගෝඨාභය, ජෙට්ඨතිස්ස මෙන්ම ධාතුසේන යන රජවරුන්ද ගල් හා ලෝහ යොදාගෙන බුදුපිළිම නිර්මාණය කළ බව අපේ පැරණි වංශ කතා හෙලිදරව් කරනු ලබනවා.
-
-මේ වංශ කතා හා අනෙකුත් මූලාශ්‍ර සදහන් කරන තොරතුරු සලකා බලන විට අපට ලංකාවේ බුදුපිළිම නෙළීම අතින් දියුණු තාක්ෂණයක් තිබූ බව අනිවාර්යෙන්ම සැලකිය හැකිය. ඒ බව මනාව පිළිබිඹු කරන ස්ථාන විදියට සමාධි බුද්ධ ප්‍රතිමාව, මාලිගාවිල බුද්ධ ප්‍රතිමාව වගේම දක්වන්න පුලුවන්.
-
-අවුකන බුදු පිළිමය 
-
-අනුරාධපුර යුගයේ නිර්මාණය වූ හිටි පිළිම සලකා බලන කල්හි ඉතාම වැදගත් නිර්මාණයක් ලෙස අවුකන බුද්ධ ප්‍රතිමාව සදහන් කරන්න පුලුවන්. මෙය ක්‍රි.ව 5 වන සියවසේ රජකල විශිෂ්ඨ රජෙකු ලෙස සැලකෙන ධාතුසේන රජතුමන්ගේ නිර්මාණයක් ලෙස සැලකෙනවා.
-
-කලා වැව ආසන්නයේ පිහිටා තිබෙන අවුකන ග්‍රාමයේ මෙය පිහිටි බැවින් මෙයට ඒ නම ලැබී තිබෙනවා. කළුගල් පර්වතයේ පූර්ණ උන්නතව පද්මාසනයක් මත වැඩසිටින ආකාරයෙන් නිර්මිත මේ බුදුපිළිමය උසින් අඩි 38යි අගල් 10 ක් පමණ වනවා. දකුණු අතින් අභය මුද්‍රාවත් වමතින් සිවුරු රැල්ල දරා සිටින අයුරින් නිර්මිතයි. ඒකාංශ ක්‍රමය අනුව සිවුර රිද්මයානුකූල වූ රැළි රටාවකින් යුක්ත වන අතර එය ඇගට ඇලුණු ස්වභාවයක්ද දක්නට පුලුවන්. අනුරාධපුර යුගයේ බුද්ධ ප්‍රතිමාවලට ආවේණික වූ සිවුරේ ඇති තනි රැල්ල මෙම පිළිමය තුලින්ද මනාව ඔප්නංවා තිබෙන අයුරු දකින්නට පුලුවන්.
-
-මෙම බුද්ධ ප්‍රතිමාව ධාතුසේන රජතුමන්ගේ නිර්මාණයක් ලෙස පිළිගැනීමට සමහර උගතුන් දක්වන්නේ මැළිකමක් නමුත් මහාචාර්ය සෙනරත් පරණවිතාන මහතාගේ අදහස වී ඇත්තේ මෙය ධාතුසේන රජතුමන්ගේ නිර්මාණයක් බවයි.
-
-මුහුණු අණ්ඩාකාරව නිමැවී ඇති අතර දෙඇස්වලින් ගැඹුරු හැගීම් විදහා දක්වන බව වියතුන්ගේ අදහස වී තිබෙනවා. හිස මුදුනේ දක්නට ඇති සිරස්පත් බිමට වැටී තිබුණු බවත් පසුව ඒවා සවිකරන්නට ඇතැයි යන්නත් බොහෝ දෙනා විශ්වාස කරනු ලබනවා. මෙහි තිබී සොයාගත් සෙල්ලිපි සදහන් කරන ආකාරයට අවුකන පිළිමයෙහි පද්මාසනය අටවන හා නවවන සියවස් වලට අයත් වූවක් බව සැලකිය හැකි වනවා.
-
-
-
-මෙම බුදුපිළිමයෙන් පිළිබිඹු කරනුයේ ගෞතම බුදුරජාණන් වහන්සේ නොව දීපංකර බුදුරජාණන් වහන්සේ බව බොහෝ උගතුන් හා වියතුන් විශ්වාස කරනවා. මන්ද ගෞතම බුදුරජාණන් වහන්සේ පිළිබිඹු කරන බුද්ධ ප්‍රතිමා සාමාන්‍යයෙන් දහ අට රියනක් වූවත් මෙය ඊට වඩා උසින් යුතු වීම එයට හේතුව විදියට සදහන් කරන්නට පුළුවන්. මෙමගින් අභය මුද්‍රාව නිරූපනය කරන අතර එමගින්ද මින් පිළිබිඹු කරනුයේ දීපංකර බුදුරදුන් බව සැලකිය හැකි බව විද්වතුන්ගේ මතයයි.
-
-පැරණි ඉන්දියාවේ කලාව තුල පැවැති විශිෂ්ටත්වය පෙන්නුම් කරන අමරාවතී බුදුපිළිම වල දක්නට ලැබෙන ලක්ෂණ අවුකන බුදුපිලිමයේද දකින්නට හැකි බව දැක්වෙනවා.
-
-අවුකන බුද්ධ ප්‍රතිමාවේ නිර්මාණ ශිල්පියා ගත්කල ඔහුට මානව රූපය පිලිබදව හසල දැනුමක් තිබූ බවට සැලකිය හැකි වනවා. එසේම මෙම පිළිමයේ ලම්භකතවය සැලකූ විට ඉතා පුදුමසහගත කාරණය නම් නාසයට වැටෙන ජල බිදුවක් පා දෙකට හරි මැදින් වැටීමයි. තවත් එවැනිම විශිෂ්ටත්වයට පිළිබිඹු කරන කාරණය නම් සිරුරේ රැළිවල දක්නට ඇති සමාන්තරත්වයයි. කළුගලක් තුළ ඇගිලිවල නියපොතු පවා දක්වා ඇති ආකාරය සලකා බැලූ කල මෙහි නිර්මාණ ශිල්පියා කෙතරම් මානව රූපය පිළිබඳව අවබෝධයකින් යුතු වූවාද යන්න නිගමනයකට එලැබීමට අපට හැකිවනවා නොඅනුමානයි. තවද මින් පෙන්නුම් කෙරෙනුයේ අතීත අපේ පැරණි මුතුන් මිත්තන්ගේ කලාවේ හා තාක්ෂණයේ පැවති විශිඨත්වය නොවේද?
-
-එසේම මෙවැනි නිර්මාණ වලින් යුතු සංස්කෘතියක් ඇති රටක උපත ලබන්නට හැකිවීම ලාංකිකයන් වන අප සැමට ඉමහත් අභිමානයක් බව මගේ අදහසයි.`
-
-  },*/
+  },
   /*
   {
-    id: 2,
+    id: 3,
     slug: "independent-square",
     title: "අභිමානවත් නිදහසේ අනුස්මරණ​ය",
     content:"memorable,new,head",
@@ -76,7 +51,7 @@ export const blogPosts = [
 නිදහස් අනුස්මරණ කෞතුකාගාරයද නිදහස් චතුරස්‍රයේ බිම් මහලේ පිහිටා ඇත.මෙය විවිධ රාජ්‍ය නායකයන්ගේද පැසසුමට ලක්වී ඇත. ජාතික ස්මාරකයක් වන නිදහස් මන්දිරය නැරඹීම සඳහා දෙස් විදෙස් සංචාරකයන් විශාල ප්‍රමාණයක් මෙම ස්ථානයට දිනෙන් දින පැමිණෙ​යි.`,
   },*/
   {
-    id: 3,
+    id: 4,
     slug: "ceylon-cinnamon",
     title: "Ceylon Cinnamon",
     date: "NOVEMBER 15, 2023",
@@ -106,7 +81,7 @@ As global consumers become more discerning, seeking out authenticity and premium
 From the ancient forests of Sri Lanka to kitchen shelves across the globe, Ceylon cinnamon remains a timeless treasure. It is more than a spice; it is a story of tradition, unparalleled quality, and a nation's enduring gift to the world.`,
   },
   {
-    id: 4,
+    id: 5,
     slug: "thelme-costume",
     title: "Thelme Costume",
     date: "AUGUST 12, 2023",
@@ -123,7 +98,7 @@ These shanthikarma are conducted to protect the health of low country people as 
   },
   /*
   {
-    id: 5,
+    id: 6,
     slug: "pattipola-summit-point",
     title: "කෝච්චි පාරේ උසම තැන සොයා ගියෙ​මු",
     date: "අගෝස්තු 3, 2023",
