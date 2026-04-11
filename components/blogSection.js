@@ -54,7 +54,7 @@ const blogs = [
     id: 1,
     title: "Pearl of the Indian Ocean",
     date: "April 10, 2026",
-    image: "/blog/gall2.jpg",
+    image: "/blog/gall4.jpg",
     excerpt: "Sri Lanka, known as the 'Pearl of the Indian Ocean,'' is a beautiful island with a great history, stunning beaches, rainforests, and magnificent mountain ranges. Although the country is small in land area, when it comes to its beauty and history, it is by no means a small country. Sri Lanka has long been a home for humanity. ...",
     link: "/blog/pearl-of-the-indian-ocean",
   },

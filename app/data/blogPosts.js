@@ -7,11 +7,11 @@ export const blogPosts = [
     title: "Pearl of the Indian Ocean",
     content:"Sri lanka, ceylon",
     date: "April 10, 2026",
-    image: "/blog/gall2.jpg",
+    image: "/blog/gall4.jpg",
     excerpt: "Sri Lanka, known as the...",
     tags: ["Sri lanka", "Religious", "Historical"],
     author: "Lakmi Tennakoon",
-    photographer: "© Dinuka Gunawardana",
+    photographer: "© Malinda Bandara via pexels",
     content: `Sri Lanka, known as the "Pearl of the Indian Ocean," is a beautiful island with a great history, stunning beaches, rainforests, and magnificent mountain ranges. Although the country is small in land area, when it comes to its beauty and history, it is by no means a small country. Sri Lanka has long been a home for humanity. The main ethnic group is the Sinhalese, alongside various other communities such as Tamils, Muslims, and Christians, among many others. The primary religion is Buddhism, while other faiths including Hinduism and Islam are also exisit. In this context, Sri Lanka is especially notable for three key aspects: its multiculturalism, its rich history, and its resilience.
 
 Sri Lankan culture is wonderful. Even though it is one of the smallest islands in the world, its culture is not small. It is not constant or uniform; instead, it is full of diversity. Since ancient times, Sri Lanka has been home to the Sinhalese. However, due to international trade, diplomatic relations with other countries, and enemy invasions, the island gradually became home to other ethnic groups such as Tamils, Muslims, and Christians. As a result of this blending, Sri Lanka effortlessly became a multicultural country. Sri Lanka has no lack of multicultural features and festivals throughout the year. During these festivals, all Sri Lankans celebrate together without any racial discrimination, with complete unity. All Sri Lankans have a special ability to embrace different cultural traditions as if they were their own, without considering race or religion. This helps Sri Lanka become a comfortable home for anyone belonging to any race or religion.
