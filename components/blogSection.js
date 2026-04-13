@@ -52,6 +52,15 @@ const blogs = [
   },*/
   {
     id: 1,
+    title: "Galle,: A Living World Heritage Destination",
+    date: "April 13, 2026",
+    image: "/blog/Galle New.jpg",
+    excerpt: "Located along the southern coast of Sri Lanka, the historic city of Galle stands as one of the island’s most captivating cultural and tourist destinations. Renowned for its unique blend of colonial heritage, coastal beauty, and vibrant local life, Galle offers an experience that is both historically rich and visually compelling....",
+    link: "/blog/World-Heritage-Destination",
+
+  },
+  {
+    id: 2,
     title: "Pearl of the Indian Ocean",
     date: "April 10, 2026",
     image: "/blog/gall4.jpg",

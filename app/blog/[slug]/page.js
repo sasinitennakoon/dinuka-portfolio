@@ -194,9 +194,13 @@ export default function BlogDetailPage({ params }) {
 
               <hr className="my-4 border-gray-300" />
 
-              <div className="text-lg leading-8 text-justify whitespace-pre-line tracking-wide">
-                {post.content}
-              </div>
+              <div
+  className="prose max-w-none
+             prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-6
+             prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-4
+             prose-p:text-justify"
+  dangerouslySetInnerHTML={{ __html: post.content }}
+/>
             </div>
           </article>
         </div>

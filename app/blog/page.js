@@ -32,6 +32,13 @@ const blogPosts = [/*
     excerpt: "නිදහස සිහිගන්වමින් ඉදිකෙරුණු නිදහස් අනුස්මරණ ශාලාව එසේත් නැත්නම් නිදහස් චතුරස්‍රය අද දිනයේ කාගේත් අවධානයට පාත්‍ර වූ ගොඩනැගිල්ලකි...",
   },*/
   {
+    title: "Galle,: A Living World Heritage Destination",
+    slug: "World-Heritage-Destination",
+    date: "April 13, 2026",
+    image: "/blog/Galle New.jpg",
+    excerpt: "Located along the southern coast of Sri Lanka, the historic city of Galle stands as one of the island’s most captivating cultural and tourist destinations. Renowned for its unique blend of colonial heritage, coastal beauty, and vibrant local life, Galle offers an experience that is both historically rich and visually compelling....",
+  },
+  {
     title: "Pearl of the Indian Ocean",
     slug: "pearl-of-the-indian-ocean",
     date: "April 10, 2026",
