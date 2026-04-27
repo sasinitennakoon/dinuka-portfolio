@@ -1,6 +1,20 @@
 // src/data/videos.js
 export const videos = [
   {
+    title: '"දුර දසුනක හිරු ගිනිගෙන" Book Launch After Movie',
+    tag: ['Editor' ],
+    description:
+      ' “දුර දසුනක හිරු ගිනිගෙන” is a compelling poetry collection featuring works by Sri Lankan Tamil women poets, translated into Sinhala by Anusha Sivalingam. Published by Law & Society Trust (LST), the book was launched through a special event accompanied by a discussion that highlighted the voices, experiences, and perspectives captured in the collection. This after movie documents the essence of the launch, capturing key moments and the atmosphere of the event held at the LST premises. Filmed by Hasith Geethanjana and edited by Dinuka Gunawardana, the video serves as a visual reflection of a meaningful literary and cultural gathering.',
+    videoSrc: '/video/Dura-dasunaka-hiru-ginigena.jpeg',
+    youtubeUrl: 'https://www.facebook.com/share/v/1B4zKzkncv/',
+     previewImages: [
+    '/video/book/1.png',
+    '/video/book/2.png',
+    '/video/book/3.png',
+    '/video/book/4.png',
+  ]
+  },
+  {
     title: 'Life in the Times of Corona',
     tag: ['Editor' ],
     description:
@@ -8,7 +22,6 @@ export const videos = [
     videoSrc: '/video/corona.jpg',
     //youtubeUrl: 'https://youtu.be/4YlqCSZ52wk?si=yAf-k1xcxvk1IcLz',
      previewImages: [
-    '/video/corona/corona 2.jpg',
     '/video/corona/corona 3.jpg',
     '/video/corona/corona 4.jpg',
     '/video/corona/corona 5.jpg',
