@@ -185,7 +185,7 @@ export default function PhotographyPage() {
           </div>
           <div className="text-xs text-[#FFFBEE] font-[DM_sans]">
             Designed & Developed by{' '}
-            <a href="https://sasini-tennakoon.vercel.app/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#FFD700]">Sasini Tennakoon</a>
+            <a href="https://sasinitennakoon.vercel.app/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#FFD700]">Sasini Tennakoon</a>
           </div>
         </div>
       </footer>

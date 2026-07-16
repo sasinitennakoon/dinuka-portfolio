@@ -218,7 +218,7 @@ export default function BlogDetailPage({ params }) {
     <div className="text-xs text-[#FFFBEE] font-[DM_sans]">
       Designed & Developed by{' '}
       <a
-        href="https://sasini-tennakoon.vercel.app/"
+        href="https://sasinitennakoon.vercel.app/"
         target="_blank"
         rel="noopener noreferrer"
         className="underline hover:text-[#FFD700]"
