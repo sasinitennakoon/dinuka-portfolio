@@ -17,7 +17,7 @@ export default function PhotographyPage() {
   const [currentGallery, setCurrentGallery] = useState([]);
 
   const portraits = [
-    '/photo/15.jpg', '/photo/4.jpg', '/photo/3.jpg', '/photo/2.jpg',
+    '/photo/DSC05403 Large.jpeg','/photo/DSC05398 Large.jpeg','/photo/DSC05395 Large.jpeg','/photo/DSC05392 Large.jpeg','/photo/DSC05389 Large.jpeg','/photo/15.jpg', '/photo/4.jpg', '/photo/3.jpg', '/photo/2.jpg',
     '/photo/13.jpg', '/photo/6.jpg', '/photo/9.jpg','/photo/1.jpg',
     '/photo/8.jpeg', '/photo/10.jpg', '/photo/11.jpg', '/photo/12.jpg',
     '/photo/5.jpg', '/photo/7.jpg', '/photo/14.jpg', '/photo/16.jpg','/photo/17.jpg','/photo/18.jpg','/photo/19.jpg'
